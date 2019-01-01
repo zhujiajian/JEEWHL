@@ -32,7 +32,7 @@ public abstract class BaseAbstractJob implements Job, Serializable {
     public void execute(JobExecutionContext context) throws JobExecutionException {
         String name = context.getTrigger().getJobKey().getName();
         String group = context.getTrigger().getJobKey().getGroup();
-        String className = context.getTrigger().getJobKey().getClass().getName();
+        String className = this.getClass().getName();
         Date startTime = new Date();
         JobLog jobLog = new JobLog();
         jobLog.setJobName(name);

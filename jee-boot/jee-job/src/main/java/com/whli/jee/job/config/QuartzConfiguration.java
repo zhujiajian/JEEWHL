@@ -1,14 +1,18 @@
 package com.whli.jee.job.config;
 
+import com.whli.jee.core.config.DruidConfig;
 import org.quartz.Scheduler;
 import org.quartz.ee.servlet.QuartzInitializerListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -40,18 +44,18 @@ public class QuartzConfiguration {
     @Bean
     public SchedulerFactoryBean schedulerFactory() throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
-        // 自定义Job Factory，用于Spring注入
+        //将spring管理job自定义工厂交由调度器维护
         factory.setJobFactory(jobFactory);
+        //设置覆盖已存在的任务
         factory.setOverwriteExistingJobs(true);
+        //设置调度器自动运行
         factory.setAutoStartup(true);
-
-        factory.setApplicationContextSchedulerContextKey("applicationContextKey");
-
-        // 加载quartz数据源配置
-        factory.setQuartzProperties(quartzProperties());
-
         // 延时启动
         factory.setStartupDelay(60);
+        //设置上下文spring bean name
+        factory.setApplicationContextSchedulerContextKey("applicationContext");
+        //设置配置文件位置
+        factory.setQuartzProperties(quartzProperties());
         return factory;
     }
 
@@ -70,10 +74,10 @@ public class QuartzConfiguration {
         properties.setProperty("org.quartz.scheduler.rmi.proxy","false");
         properties.setProperty("org.quartz.scheduler.wrapJobExecutionInUserTransaction","false");
         properties.setProperty("org.quartz.threadPool.class","org.quartz.simpl.SimpleThreadPool");
-        properties.setProperty("org.quartz.threadPool.threadCount","5");
+        properties.setProperty("org.quartz.threadPool.threadCount","10");
         properties.setProperty("org.quartz.threadPool.threadPriority","5");
         properties.setProperty("org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread","true");
-        properties.setProperty("org.quartz.jobStore.misfireThreshold","5000");
+        properties.setProperty("org.quartz.jobStore.misfireThreshold","60000");
         properties.setProperty("org.quartz.jobStore.class","org.quartz.impl.jdbcjobstore.JobStoreTX");
         properties.setProperty("org.quartz.jobStore.tablePrefix","QRTZ_");
         properties.setProperty("org.quartz.jobStore.clusterCheckinInterval","15000");

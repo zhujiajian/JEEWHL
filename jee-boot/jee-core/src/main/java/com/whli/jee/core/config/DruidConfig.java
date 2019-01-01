@@ -103,6 +103,7 @@ public class DruidConfig {
         return filterRegistrationBean;
     }
 
+    @Bean
     @Primary
     public DataSource druidDataSource() throws SQLException{
         if (this.dbUrl == null) {

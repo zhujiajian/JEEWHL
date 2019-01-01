@@ -272,6 +272,7 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
     	SELECT <include refid="columns" />
 	    FROM tl_job_log 
 		<include refid="findByPageWhere"/>
+		ORDER BY date_time DESC
     </select>
 
 	<!-- 查询所有数据 -->

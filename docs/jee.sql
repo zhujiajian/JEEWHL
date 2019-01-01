@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50559
 File Encoding         : 65001
 
-Date: 2018-12-28 14:47:23
+Date: 2019-01-01 16:07:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -134,6 +134,7 @@ CREATE TABLE `qrtz_locks` (
 -- ----------------------------
 -- Records of qrtz_locks
 -- ----------------------------
+INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'STATE_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -164,6 +165,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
+INSERT INTO `qrtz_scheduler_state` VALUES ('schedulerFactory', 'whli-PC1546329777545', '1546330034452', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -258,12 +260,12 @@ CREATE TABLE `qrtz_triggers` (
 DROP TABLE IF EXISTS `tl_job_log`;
 CREATE TABLE `tl_job_log` (
   `tl_job_log_id` varchar(64) NOT NULL,
-  `job_name` varchar(200) NOT NULL,
-  `job_group` varchar(200) NOT NULL,
-  `job_class` varchar(200) NOT NULL,
-  `date_time` datetime NOT NULL,
-  `duration` int(11) DEFAULT NULL,
-  `msg` varchar(4000) DEFAULT NULL,
+  `job_name` varchar(200) NOT NULL COMMENT '任务名称',
+  `job_group` varchar(200) NOT NULL COMMENT '任务组',
+  `job_class` varchar(200) NOT NULL COMMENT '任务类',
+  `date_time` datetime NOT NULL COMMENT '运行时间',
+  `duration` int(11) DEFAULT NULL COMMENT '总耗时（秒）',
+  `msg` varchar(4000) DEFAULT NULL COMMENT '任务信息',
   `create_by` varchar(50) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`tl_job_log_id`)
@@ -324,6 +326,7 @@ INSERT INTO `tr_sys_role_menu` VALUES ('1', 'A4FA9839EF9C11E79CCA507B9DC552FD');
 INSERT INTO `tr_sys_role_menu` VALUES ('1', '9F6451C6EFAF11E7A72A507B9DC552FD');
 INSERT INTO `tr_sys_role_menu` VALUES ('1', '8542004A6DE744E2BCD9758B05AE4BC7');
 INSERT INTO `tr_sys_role_menu` VALUES ('1', '832C1B309E114648AD0C37A2AB813F09');
+INSERT INTO `tr_sys_role_menu` VALUES ('1', 'D2F1639EC6BF4E9AA6C217358CC7A952');
 
 -- ----------------------------
 -- Table structure for tr_sys_user_role
@@ -449,6 +452,7 @@ INSERT INTO `ts_sys_menu` VALUES ('b5a1b55bfa3a4a86a5db06a6dc681156', 'A4FA9839E
 INSERT INTO `ts_sys_menu` VALUES ('BBC5667467A74EDCAB1FAE40053841A8', '1', '定时任务', null, '7', '../task/SysJob/SysJobList.html', 'TAB', '', null, 'whli', '2018-12-28 13:49:01', null, null, '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('C00E62F9EF7C11E79CCA507B9DC552FD', '1', '字典管理', '1', '4', '../system/SysDict/SysDictList.html', 'TAB', 'fa-book', '', 'whli', '2018-01-02 13:21:14', 'whli', '2018-08-16 15:21:32', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('CA42B39FD2864EEA9553FABF839E7A6D', '2', '新增', null, '1', 'btn_add', 'BUTTON', '', null, 'whli', '2018-08-17 11:17:06', '', '2018-08-17 11:17:06', '', '1');
+INSERT INTO `ts_sys_menu` VALUES ('D2F1639EC6BF4E9AA6C217358CC7A952', '8542004A6DE744E2BCD9758B05AE4BC7', '定时任务日志', null, '2', '../task/JobLog/JobLogList.html', 'TAB', '', null, 'whli', '2019-01-01 16:04:26', null, null, '', '1');
 
 -- ----------------------------
 -- Table structure for ts_sys_office

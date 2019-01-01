@@ -19,7 +19,6 @@ public class SysMenu extends BaseEntity{
     private String href;  //链接
     private String target;  //目标
     private String icon;  //图标
-    private String menuType;  //权限标识
     private String remark;  //备注信息
     private Integer enable;  //删除标记
 
@@ -97,14 +96,6 @@ public class SysMenu extends BaseEntity{
 
     public void setMenus(List<SysMenu> menus) {
         this.menus = menus;
-    }
-
-    public String getMenuType() {
-        return menuType;
-    }
-
-    public void setMenuType(String menuType) {
-        this.menuType = menuType;
     }
 
     public String getRoleId() {

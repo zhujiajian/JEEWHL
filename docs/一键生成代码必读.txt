@@ -16,14 +16,14 @@
          *  tableNames 需要生成代码的表名
          */
         Generator generator = new Generator();
-        generator.setBasePackage("com.whli.jee.sys");
-        generator.setNamespace("sys");
+        generator.setBasePackage("com.whli.jee.job");
+        generator.setNamespace("scheduler");
         generator.setOutRoot(null);
         generator.setDataUsername("root");
         generator.setDataPassword("root");
         generator.setDataUrl("jdbc:mysql://localhost:3306/jee?useUnicode=true&amp;characterEncoding=UTF-8");
-        generator.setDataDriver(null);
-        generator.setTableRemovePrefixes("ts_");
+        generator.setDataDriver("com.mysql.jdbc.Driver");
+        generator.setTableRemovePrefixes("tl_");
 	List<String> tableNames = new ArrayList<String>();
         tableNames.add("tl_job_log");
         generator.setTableNames(tableNames);

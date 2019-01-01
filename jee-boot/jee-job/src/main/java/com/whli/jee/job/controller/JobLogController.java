@@ -1,8 +1,8 @@
 package com.whli.jee.job.controller;
 
 import com.whli.jee.core.page.Page;
-import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.core.web.controller.BaseController;
+import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.job.entity.JobLog;
 import com.whli.jee.job.service.IJobLogService;
 import org.springframework.beans.factory.annotation.Autowired;
