@@ -6,6 +6,8 @@ import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysArea;
 import com.whli.jee.system.service.ISysAreaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/system/sysArea")
+@Api(description = "区域API")
 public class SysAreaController extends BaseController<SysArea> {
 
     @Autowired
@@ -34,6 +37,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询区域")
     @Override
     public ResponseBean findByPage(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -51,6 +55,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiOperation("增加区域")
     @Override
     public ResponseBean add(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -68,6 +73,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/update")
+    @ApiOperation("修改区域")
     @Override
     public ResponseBean update(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -84,6 +90,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiOperation("删除区域")
     @Override
     public ResponseBean delete(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -98,6 +105,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiOperation("根据区域ID查询")
     @Override
     public SysArea findByPK(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         return sysAreaService.findByPK(entity.getId());
@@ -111,6 +119,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @throws Exception
      */
     @PostMapping(value = "/findByNo")
+    @ApiOperation("根据区域编码查询")
     @Override
     public SysArea findByNo(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         return sysAreaService.findByNo(entity.getCode());
@@ -124,6 +133,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @throws Exception
      */
     @PostMapping(value = "/findByName")
+    @ApiOperation("根据区域名称查询")
     @Override
     public SysArea findByName(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         return sysAreaService.findByName(entity.getName());
@@ -136,6 +146,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiOperation("查询所有区域")
     @Override
     public List<SysArea> findAll(@RequestBody SysArea entity, HttpServletRequest req) throws Exception {
         return sysAreaService.findAll(entity);
@@ -147,6 +158,7 @@ public class SysAreaController extends BaseController<SysArea> {
      * @return
      */
     @PostMapping(value = "/findByParentIdAndSort")
+    @ApiOperation("查询同级别下序号是否存在")
     public String findByParentIdAndSort(SysArea entity){
         SysArea temp = sysAreaService.findByParentIdAndSort(entity);
         if (BeanUtils.isNotNull(temp)){

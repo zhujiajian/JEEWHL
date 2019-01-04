@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,6 +23,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value="/${namespace}/${classNameLower}")
+@Api(description = "")
 public class ${className}Controller extends BaseController<${className}>{
 
 	@Autowired
@@ -34,6 +37,7 @@ public class ${className}Controller extends BaseController<${className}>{
 	 * @throws Exception
      */
     @PostMapping(value = "/findByPage")
+	@ApiOperation("")
 	@Override
     public ResponseBean findByPage(@RequestBody ${className} entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -54,6 +58,7 @@ public class ${className}Controller extends BaseController<${className}>{
 	 * @throws Exception
      */
     @PostMapping(value = "/add")
+	@ApiOperation("")
 	@Override
     public ResponseBean add(@RequestBody ${className} entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -73,6 +78,7 @@ public class ${className}Controller extends BaseController<${className}>{
 	 * @throws Exception
      */
     @PostMapping(value = "/update")
+	@ApiOperation("")
 	@Override
     public ResponseBean update(@RequestBody ${className} entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -92,6 +98,7 @@ public class ${className}Controller extends BaseController<${className}>{
 	 * @throws Exception
      */
     @PostMapping(value = "/delete")
+	@ApiOperation("")
 	@Override
     public ResponseBean delete(@RequestBody ${className} entity, HttpServletRequest req)
         throws Exception {
@@ -110,6 +117,7 @@ public class ${className}Controller extends BaseController<${className}>{
 	 * @throws Exception
 	 */
     @PostMapping(value = "/findByPK")
+	@ApiOperation("")
 	@Override
 	public ${className} findByPK(@RequestBody ${className} entity, HttpServletRequest req) throws Exception{
 		return ${classNameLower}Service.findByPK(entity.getId());
@@ -123,6 +131,7 @@ public class ${className}Controller extends BaseController<${className}>{
      * @throws Exception
      */
     @PostMapping(value = "/findByNo")
+	@ApiOperation("")
     @Override
     public ${className} findByNo(@RequestBody ${className} entity, HttpServletRequest req) throws Exception {
         return null;
@@ -136,6 +145,7 @@ public class ${className}Controller extends BaseController<${className}>{
      * @throws Exception
      */
     @PostMapping(value = "/findByName")
+	@ApiOperation("")
     @Override
     public ${className} findByName(@RequestBody ${className} entity, HttpServletRequest req) throws Exception {
         return null;
@@ -150,6 +160,7 @@ public class ${className}Controller extends BaseController<${className}>{
 	 * @throws Exception
      */
     @PostMapping(value = "/findAll")
+	@ApiOperation("")
 	@Override
     public List<${className}> findAll(@RequestBody ${className} entity, HttpServletRequest req) throws Exception {
         return ${classNameLower}Service.findAll(entity);

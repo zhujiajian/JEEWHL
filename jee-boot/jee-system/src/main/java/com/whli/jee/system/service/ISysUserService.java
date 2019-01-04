@@ -67,9 +67,8 @@ public interface ISysUserService extends IBaseService<SysUser> {
 
     /**
      * 重置密码
-     * @param id
-     * @param password
+     * @param entity
      * @return
      */
-    public int resetPassword(String id, String password);
+    public int resetPassword(SysUser entity);
 }

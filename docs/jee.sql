@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50559
 File Encoding         : 65001
 
-Date: 2019-01-01 16:07:28
+Date: 2019-01-04 10:00:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -135,6 +135,7 @@ CREATE TABLE `qrtz_locks` (
 -- Records of qrtz_locks
 -- ----------------------------
 INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'STATE_ACCESS');
+INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'TRIGGER_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -165,7 +166,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('schedulerFactory', 'whli-PC1546329777545', '1546330034452', '15000');
+INSERT INTO `qrtz_scheduler_state` VALUES ('schedulerFactory', 'whli-PC1546566744456', '1546567197709', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -263,11 +264,11 @@ CREATE TABLE `tl_job_log` (
   `job_name` varchar(200) NOT NULL COMMENT '任务名称',
   `job_group` varchar(200) NOT NULL COMMENT '任务组',
   `job_class` varchar(200) NOT NULL COMMENT '任务类',
-  `date_time` datetime NOT NULL COMMENT '运行时间',
+  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '运行时间',
   `duration` int(11) DEFAULT NULL COMMENT '总耗时（秒）',
   `msg` varchar(4000) DEFAULT NULL COMMENT '任务信息',
   `create_by` varchar(50) DEFAULT NULL,
-  `create_date` datetime DEFAULT NULL,
+  `create_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`tl_job_log_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -288,15 +289,18 @@ CREATE TABLE `tl_sys_log` (
   `ip` varchar(50) DEFAULT NULL COMMENT '操作ip',
   `host_name` varchar(200) DEFAULT NULL COMMENT '操作主机',
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`tl_sys_log_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日志表';
 
 -- ----------------------------
 -- Records of tl_sys_log
 -- ----------------------------
+INSERT INTO `tl_sys_log` VALUES ('131FF50BCCA5476F8F4C7F875BB7A764', 'DELETE', 'DELETE FROM tr_sys_user_role WHERE ts_sys_user_id = ?\n		AND ts_sys_role_id in\n		 (  \n			?\n		 )', '{1, 1}', 'http://127.0.0.1:8088/jee/system/sysUser/deleteRoleByUser', '192.168.1.103', '127.0.0.1', 'admin', '2019-01-04 09:42:40', null, null);
+INSERT INTO `tl_sys_log` VALUES ('444F314829D0475191731AF5E78AC82C', 'ADD', 'INSERT INTO tr_sys_user_role\n		 ( ts_sys_user_id,\n			\n			\n				ts_sys_role_id ) \n		 values ( ?,\n			\n			\n				? )', '{1, 1}', 'http://127.0.0.1:8088/jee/system/sysUser/grantUser', '192.168.1.103', '127.0.0.1', 'admin', '2019-01-04 09:42:40', null, null);
+INSERT INTO `tl_sys_log` VALUES ('6665282CFEBF4D4E89E20D7EBDFDDBA6', 'ADD', 'INSERT INTO tr_sys_user_role\n		 ( ts_sys_user_id,\n			\n			\n				ts_sys_role_id ) \n		 values ( ?,\n			\n			\n				? )', '{1, 1}', 'http://127.0.0.1:8088/jee/system/sysUser/grantUser', '192.168.1.103', '127.0.0.1', 'admin', '2019-01-04 09:42:40', null, null);
 
 -- ----------------------------
 -- Table structure for tr_sys_role_menu
@@ -340,8 +344,8 @@ CREATE TABLE `tr_sys_user_role` (
 -- ----------------------------
 -- Records of tr_sys_user_role
 -- ----------------------------
-INSERT INTO `tr_sys_user_role` VALUES ('1', '1');
 INSERT INTO `tr_sys_user_role` VALUES ('1', '2');
+INSERT INTO `tr_sys_user_role` VALUES ('1', '1');
 
 -- ----------------------------
 -- Table structure for ts_sys_area
@@ -351,13 +355,13 @@ CREATE TABLE `ts_sys_area` (
   `ts_sys_area_id` varchar(64) NOT NULL COMMENT '编号',
   `parent_id` varchar(64) NOT NULL COMMENT '父级编号',
   `name` varchar(100) NOT NULL COMMENT '名称',
-  `sort` decimal(10,0) NOT NULL COMMENT '排序',
+  `sort` int(10) NOT NULL COMMENT '排序',
   `code` varchar(100) DEFAULT NULL COMMENT '区域编码',
   `type` char(1) DEFAULT NULL COMMENT '区域类型',
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`ts_sys_area_id`)
@@ -378,9 +382,9 @@ CREATE TABLE `ts_sys_dict` (
   `name` varchar(100) NOT NULL COMMENT '标签名',
   `sort` int(11) DEFAULT NULL,
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`ts_sys_dict_id`)
@@ -418,15 +422,15 @@ CREATE TABLE `ts_sys_menu` (
   `parent_id` varchar(64) DEFAULT NULL COMMENT '父级编号',
   `name` varchar(100) NOT NULL COMMENT '名称',
   `menu_type` varchar(3) DEFAULT NULL,
-  `sort` decimal(10,0) NOT NULL COMMENT '排序',
+  `sort` int(10) NOT NULL COMMENT '排序',
   `href` varchar(2000) DEFAULT NULL COMMENT '链接',
   `target` varchar(20) DEFAULT NULL COMMENT '目标',
   `icon` varchar(100) DEFAULT NULL COMMENT '图标',
   `permission` varchar(200) DEFAULT NULL COMMENT '权限标识',
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`ts_sys_menu_id`)
@@ -462,7 +466,7 @@ CREATE TABLE `ts_sys_office` (
   `ts_sys_office_id` varchar(64) NOT NULL COMMENT '编号',
   `parent_id` varchar(64) DEFAULT NULL COMMENT '父级编号',
   `name` varchar(100) NOT NULL COMMENT '名称',
-  `sort` decimal(10,0) NOT NULL COMMENT '排序',
+  `sort` int(10) NOT NULL COMMENT '排序',
   `type` varchar(100) NOT NULL COMMENT '机构类型',
   `master` varchar(100) DEFAULT NULL COMMENT '负责人',
   `phone` varchar(200) DEFAULT NULL COMMENT '电话',
@@ -470,9 +474,9 @@ CREATE TABLE `ts_sys_office` (
   `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
   `deputy_person` varchar(64) DEFAULT NULL COMMENT '副负责人',
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`ts_sys_office_id`)
@@ -492,9 +496,9 @@ CREATE TABLE `ts_sys_role` (
   `no` varchar(100) NOT NULL COMMENT '角色名称',
   `name` varchar(255) DEFAULT NULL COMMENT '英文名称',
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`ts_sys_role_id`)
@@ -503,8 +507,8 @@ CREATE TABLE `ts_sys_role` (
 -- ----------------------------
 -- Records of ts_sys_role
 -- ----------------------------
-INSERT INTO `ts_sys_role` VALUES ('1', '系统管理员', 'administrator', 'whli', '2017-12-25 13:32:24', 'whli', '2018-08-17 13:43:06', '', '1');
-INSERT INTO `ts_sys_role` VALUES ('2', '普通用户', 'user', 'whli', '2017-12-25 13:32:45', 'whli', '2018-08-17 13:43:10', '', '1');
+INSERT INTO `ts_sys_role` VALUES ('1', 'administrator', '系统管理员', 'whli', '2019-01-04 09:51:17', 'whli', '2018-08-17 13:43:06', '', '1');
+INSERT INTO `ts_sys_role` VALUES ('2', 'user', '普通用户', 'whli', '2019-01-04 09:51:24', 'whli', '2018-08-17 13:43:10', '', '1');
 
 -- ----------------------------
 -- Table structure for ts_sys_user
@@ -521,11 +525,11 @@ CREATE TABLE `ts_sys_user` (
   `phone` varchar(200) DEFAULT NULL COMMENT '电话',
   `photo` varchar(1000) DEFAULT NULL COMMENT '用户头像',
   `login_ip` varchar(100) DEFAULT NULL COMMENT '最后登陆IP',
-  `login_date` datetime DEFAULT NULL COMMENT '最后登陆时间',
+  `login_date` timestamp NULL DEFAULT NULL COMMENT '最后登陆时间',
   `create_by` varchar(64) NOT NULL COMMENT '创建者',
-  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT NULL COMMENT '更新者',
-  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
   PRIMARY KEY (`ts_sys_user_id`)
@@ -534,4 +538,4 @@ CREATE TABLE `ts_sys_user` (
 -- ----------------------------
 -- Records of ts_sys_user
 -- ----------------------------
-INSERT INTO `ts_sys_user` VALUES ('1', null, 'whli', '2813007B4D4BE131C2646585308B968D', '001', '汪先生', '623374047@qq.com', '13800000000', '', '127.0.0.1', '2018-01-22 16:25:13', 'whli', '2017-12-24 15:10:14', 'whli', '2018-01-22 16:25:13', '', '1');
+INSERT INTO `ts_sys_user` VALUES ('1', null, 'admin', 'B9D11B3BE25F5A1A7DC8CA04CD310B28', '001', '超级管理员', '914164901@qq.com', '13800000000', '', '127.0.0.1', '2018-01-22 16:25:13', 'whli', '2017-12-24 15:10:14', 'whli', '2018-01-22 16:25:13', '', '1');

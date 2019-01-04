@@ -81,6 +81,33 @@ $(function () {
 						});
 					});
 				}
+			},
+			{
+				btnId: "btn_reset",
+				btnCss: "btn btn-info",
+				btnText: "重置密码",
+				otherOptions: [{
+					id: "tb_data",
+					selectMinNum: 1
+				}],
+				btnClick: function () {
+					var selections = $("#tb_data").bootstrapTable("getSelections");
+					if (selections == null || selections.length == 0) {
+						JEE.errMsg("请选择需要重置密码的用户！");
+						return;
+					}
+					var ids = [];
+					$.each(selections, function (i, item) {
+						ids.push(item.id);
+					});
+					
+					JEE.confirmMsg("是否确认删除数据？", function(){
+						$.when(JEE.myAjax("/system/sysUser/resetPassword", {ids: ids})).done(function(result){
+							$("#myModal").hide();
+							$("#tb_data").bootstrapTable("refresh");
+						});
+					});
+				}
 			}
 		],
 		tableId: "tb_data",

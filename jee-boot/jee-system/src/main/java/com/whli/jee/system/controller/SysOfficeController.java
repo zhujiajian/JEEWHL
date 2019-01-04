@@ -6,11 +6,14 @@ import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysOffice;
 import com.whli.jee.system.service.ISysOfficeService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/system/sysOffice")
+@Api(description = "组织架构API")
 public class SysOfficeController extends BaseController<SysOffice> {
 
     @Autowired
@@ -33,6 +37,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询组织架构")
     @Override
     public ResponseBean findByPage(@RequestBody SysOffice entity,  HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -52,6 +57,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiOperation("增加组织架构")
     @Override
     public ResponseBean add(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -70,6 +76,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/update")
+    @ApiOperation("修改组织架构")
     @Override
     public ResponseBean update(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -87,6 +94,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiOperation("删除组织架构")
     @Override
     public ResponseBean delete(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -103,6 +111,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiOperation("根据ID查询")
     @Override
     public SysOffice findByPK(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         return sysOfficeService.findByPK(entity.getId());
@@ -116,6 +125,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @throws Exception
      */
     @PostMapping(value = "/findByNo")
+    @ApiIgnore
     @Override
     public SysOffice findByNo(SysOffice entity, HttpServletRequest req) throws Exception {
         return null;
@@ -129,6 +139,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @throws Exception
      */
     @PostMapping(value = "/findByName")
+    @ApiOperation("根据组织架构名称查询")
     @Override
     public SysOffice findByName(SysOffice entity, HttpServletRequest req) throws Exception {
         return sysOfficeService.findByName(entity.getName());
@@ -140,6 +151,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiOperation("查询所有组织架构")
     @Override
     public List<SysOffice> findAll(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         return sysOfficeService.findAll(entity);
@@ -151,6 +163,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
      * @return
      */
     @PostMapping(value = "/findByParentIdAndSort")
+    @ApiOperation("查询同级别下是否存在相同序号")
     public String findByParentIdAndSort(SysOffice entity){
         SysOffice temp = sysOfficeService.findByParentIdAndSort(entity);
         if (BeanUtils.isNotNull(temp)){

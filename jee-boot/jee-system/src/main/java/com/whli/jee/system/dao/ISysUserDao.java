@@ -43,5 +43,5 @@ public interface ISysUserDao extends IBaseDao<SysUser> {
      * @param password
      * @return
      */
-    public int resetPassword(String id, String password);
+    public int resetPassword(@Param("id") String id, @Param("password") String password);
 }

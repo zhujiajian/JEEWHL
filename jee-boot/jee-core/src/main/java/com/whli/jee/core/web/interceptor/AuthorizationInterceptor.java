@@ -37,6 +37,11 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter{
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
 
+        //验证是否swagger API
+        if ("swaggerResources".equals(handlerMethod.getMethod().getName()) || "getDocumentation".equals(handlerMethod.getMethod().getName())) {
+            return true;
+        }
+
         //无须验证直接登录
         AuthorPermit permit = handlerMethod.getMethodAnnotation(AuthorPermit.class);
         if(permit != null){

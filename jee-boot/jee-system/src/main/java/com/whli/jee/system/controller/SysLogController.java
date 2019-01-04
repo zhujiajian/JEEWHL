@@ -5,11 +5,14 @@ import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysLog;
 import com.whli.jee.system.service.ISysLogService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,6 +24,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/system/sysLog")
+@Api(description = "系统日志API")
 public class SysLogController extends BaseController<SysLog> {
 
     @Autowired
@@ -32,6 +36,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询系统日志")
     @Override
     public ResponseBean findByPage(@RequestBody SysLog entity,HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -51,6 +56,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiIgnore
     @Override
     public ResponseBean add(@RequestBody SysLog entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -69,6 +75,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/update")
+    @ApiIgnore
     @Override
     public ResponseBean update(@RequestBody SysLog entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -87,6 +94,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiIgnore
     @Override
     public ResponseBean delete(@RequestBody SysLog entity, HttpServletRequest req) {
         ResponseBean responseBean = new ResponseBean();
@@ -103,6 +111,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiIgnore
     @Override
     public SysLog findByPK(@RequestBody SysLog entity, HttpServletRequest req) throws Exception {
         return sysLogService.findByPK(entity.getId());
@@ -115,6 +124,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/findByNo")
+    @ApiIgnore
     @Override
     public SysLog findByNo(SysLog entity, HttpServletRequest req) throws Exception {
         return null;
@@ -127,6 +137,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/findByName")
+    @ApiIgnore
     @Override
     public SysLog findByName(SysLog entity, HttpServletRequest req) throws Exception {
         return null;
@@ -139,6 +150,7 @@ public class SysLogController extends BaseController<SysLog> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiIgnore
     @Override
     public List<SysLog> findAll(@RequestBody SysLog entity, HttpServletRequest req) throws Exception {
         return sysLogService.findAll(entity);

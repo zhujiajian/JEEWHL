@@ -7,8 +7,10 @@ import com.whli.jee.core.web.dao.IBaseDao;
 import com.whli.jee.core.web.service.impl.BaseServiceImpl;
 import com.whli.jee.system.dao.ISysUserDao;
 import com.whli.jee.system.dao.ISysUserRoleDao;
+import com.whli.jee.system.entity.SysRole;
 import com.whli.jee.system.entity.SysUser;
 import com.whli.jee.system.entity.SysUserRole;
+import com.whli.jee.system.service.ISysRoleService;
 import com.whli.jee.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     private ISysUserDao sysUserDao;
     @Autowired
     private ISysUserRoleDao sysUserRoleDao;
+    @Autowired
+    private ISysRoleService sysRoleService;
 
     @Override
     public IBaseDao<SysUser> getDao() {
@@ -158,6 +162,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
                 SysUserRole userRole = new SysUserRole();
                 userRole.setRoleId(roleId);
                 userRole.setUserId(userId);
+                List<SysUserRole> sysUserRoles = sysUserRoleDao.findAll(userRole);
+                if (CollectionUtils.isNotNullOrEmpty(sysUserRoles)){
+                    SysRole role = sysRoleService.findByPK(roleId);
+                    throw new ApplicationException("-01010107","角色【"+role.getName()+"】已存在！");
+                }
                 userRoles.add(userRole);
                 sysUserRoleDao.add(userRole);
                 rows++;
@@ -167,11 +176,17 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     }
 
     @Override
-    public int resetPassword(String id, String password) {
-        if (StringUtils.isNullOrBlank(id) || StringUtils.isNullOrBlank(password)){
-            throw new ApplicationException("-01010106","新密码不能为空！");
+    public int resetPassword(SysUser entity) {
+        int rows = 0;
+        if (CollectionUtils.isNullOrEmpty(entity.getIds())){
+            throw new ApplicationException("-01010106","请选择需要重置密码的用户！");
+        }
+        for (String id : entity.getIds()){
+            SysUser user = findByPK(id);
+            sysUserDao.resetPassword(id,PwdUtils.md5Encode("123456",user.getLoginName()));
+            rows++;
         }
 
-        return sysUserDao.resetPassword(id,password);
+        return rows;
     }
 }

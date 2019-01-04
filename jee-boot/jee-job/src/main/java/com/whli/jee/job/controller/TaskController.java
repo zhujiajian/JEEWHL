@@ -5,11 +5,14 @@ import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.job.entity.Task;
 import com.whli.jee.job.service.ITaskService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,12 +25,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/scheduler/task")
+@Api(description = "定时任务API")
 public class TaskController  extends BaseController<Task> {
     @Autowired
     private ITaskService taskService;
 
     @Override
     @PostMapping("/findByPage")
+    @ApiOperation("分页查询定时任务")
     public ResponseBean findByPage(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         if (entity != null) {
@@ -41,6 +46,7 @@ public class TaskController  extends BaseController<Task> {
 
     @Override
     @PostMapping("/add")
+    @ApiOperation("增加定时任务")
     public ResponseBean add(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         int rows = taskService.add(entity);
@@ -53,6 +59,7 @@ public class TaskController  extends BaseController<Task> {
 
     @Override
     @PostMapping("/update")
+    @ApiOperation("修改定时任务")
     public ResponseBean update(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         int rows = taskService.update(entity);
@@ -65,6 +72,7 @@ public class TaskController  extends BaseController<Task> {
 
     @Override
     @PostMapping("/delete")
+    @ApiOperation("删除定时任务")
     public ResponseBean delete(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         taskService.delete(entity);
@@ -73,21 +81,25 @@ public class TaskController  extends BaseController<Task> {
         return responseBean;
     }
 
+    @ApiIgnore
     @Override
     public Task findByPK(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         return null;
     }
 
+    @ApiIgnore
     @Override
     public Task findByNo(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         return null;
     }
 
+    @ApiIgnore
     @Override
     public Task findByName(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         return null;
     }
 
+    @ApiIgnore
     @Override
     public List<Task> findAll(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         return null;
@@ -99,6 +111,7 @@ public class TaskController  extends BaseController<Task> {
      * @return
      */
     @PostMapping("/start")
+    @ApiOperation("开始定时任务")
     public ResponseBean startTask(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         Boolean rows = taskService.startTask(entity);
@@ -115,6 +128,7 @@ public class TaskController  extends BaseController<Task> {
      * @return
      */
     @PostMapping("/startAll")
+    @ApiOperation("开始所有任务")
     public ResponseBean startAllTask(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         Boolean rows = taskService.startAll();
@@ -131,6 +145,7 @@ public class TaskController  extends BaseController<Task> {
      * @return
      */
     @PostMapping("/stop")
+    @ApiOperation("暂停定时任务")
     public ResponseBean stopTask(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         Boolean rows = taskService.stopTask(entity);
@@ -147,6 +162,7 @@ public class TaskController  extends BaseController<Task> {
      * @return
      */
     @PostMapping("/stopAll")
+    @ApiOperation("暂停所有任务")
     public ResponseBean stopAllTask(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         Boolean rows = taskService.stopAll();

@@ -7,6 +7,8 @@ import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysDict;
 import com.whli.jee.system.service.ISysDictService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/system/sysDict")
+@Api(description = "系统字典API")
 public class SysDictController extends BaseController<SysDict> {
 
     @Autowired
@@ -35,6 +38,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询字典")
     @Override
     public ResponseBean findByPage(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -56,6 +60,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiOperation("增加字典")
     @Override
     public ResponseBean add(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -74,6 +79,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/update")
+    @ApiOperation("修改字典")
     @Override
     public ResponseBean update(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -91,6 +97,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiOperation("删除字典")
     @Override
     public ResponseBean delete(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -106,6 +113,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiOperation("根据字典ID查询")
     @Override
     public SysDict findByPK(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         return sysDictService.findByPK(entity.getId());
@@ -119,6 +127,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @throws Exception
      */
     @PostMapping(value = "/findByNo")
+    @ApiOperation("根据字典值查询")
     @Override
     public SysDict findByNo(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         return sysDictService.findByNo(entity.getValue());
@@ -132,6 +141,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @throws Exception
      */
     @PostMapping(value = "/findByName")
+    @ApiOperation("根据字典名称查询")
     @Override
     public SysDict findByName(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         return sysDictService.findByName(entity.getName());
@@ -144,6 +154,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiOperation("查询所有字典")
     public List<SysDict> findAll(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         return sysDictService.findAll(entity);
     }
@@ -154,6 +165,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/findByParentValue")
+    @ApiOperation("根据父字典值查询")
     public List<SysDict> findByParentValue(@RequestBody SysDict entity, HttpServletRequest req) throws Exception {
         return sysDictService.findByParentValue(entity.getValue());
     }
@@ -164,6 +176,7 @@ public class SysDictController extends BaseController<SysDict> {
      * @return
      */
     @PostMapping(value = "/findByParentIdAndSort")
+    @ApiOperation("查询同级别下序号是否存在")
     public String findByParentIdAndSort(SysDict entity){
         SysDict temp = sysDictService.findByParentIdAndSort(entity);
         if (BeanUtils.isNotNull(temp)){

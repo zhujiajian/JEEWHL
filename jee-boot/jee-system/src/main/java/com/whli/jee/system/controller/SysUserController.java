@@ -9,6 +9,8 @@ import com.whli.jee.system.entity.SysUser;
 import com.whli.jee.system.entity.SysUserRole;
 import com.whli.jee.system.service.ISysUserRoleService;
 import com.whli.jee.system.service.ISysUserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,12 +21,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
+ * <p>用户管理</p>
  * @author whli
  * @version 1.0
- * @since 1.0
  */
 @RestController
 @RequestMapping(value = "/system/sysUser")
+@Api(description = "系统用户API")
 public class SysUserController extends BaseController<SysUser> {
 
     @Autowired
@@ -42,6 +45,7 @@ public class SysUserController extends BaseController<SysUser> {
      */
     @AuthorPermit
     @PostMapping(value = "/login")
+    @ApiOperation("用户登录")
     public ResponseBean login(String username,String password) throws Exception{
         ResponseBean responseBean = new ResponseBean();
         SysUser loginUser = sysUserService.login(username,password);
@@ -59,6 +63,7 @@ public class SysUserController extends BaseController<SysUser> {
      */
     @AuthorPermit
     @PostMapping(value = "/logout")
+    @ApiOperation("用户退出")
     public ResponseBean logout(HttpServletRequest request) throws Exception{
         ResponseBean responseBean = new ResponseBean();
         boolean flag = sysUserService.logout(request);
@@ -73,6 +78,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询用户")
     @Override
     public ResponseBean findByPage(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -91,6 +97,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiOperation("新增用户")
     @Override
     public ResponseBean add(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -108,6 +115,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/update")
+    @ApiOperation("修改用户")
     @Override
     public ResponseBean update(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -125,6 +133,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiOperation("删除用户")
     @Override
     public ResponseBean delete(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -140,6 +149,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiOperation("根据用户ID查询")
     @Override
     public SysUser findByPK(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findByPK(entity.getId());
@@ -151,6 +161,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/findByNo")
+    @ApiOperation("根据用户登录名查询")
     @Override
     public SysUser findByNo(SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findByNo(entity.getLoginName());
@@ -162,6 +173,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/findByName")
+    @ApiOperation("根据用户姓名查询")
     @Override
     public SysUser findByName(SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findByName(entity.getName());
@@ -173,6 +185,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiOperation("查找所有用户")
     @Override
     public List<SysUser> findAll(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findAll(entity);
@@ -185,6 +198,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/grantUser")
+    @ApiOperation("给用户授权角色")
     public ResponseBean grantUser(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         int rows = sysUserService.grantByUser(entity.getId(),entity.getRoleIds());
@@ -203,6 +217,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @throws Exception
      */
     @PostMapping(value = "/deleteRoleByUser")
+    @ApiOperation("删除用户的角色")
     public ResponseBean deleteRoleByUser(@RequestBody SysUserRole entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         sysUserRoleService.deleteByUser(entity);
@@ -217,9 +232,10 @@ public class SysUserController extends BaseController<SysUser> {
      * @return
      */
     @PostMapping(value = "/resetPassword")
+    @ApiOperation("重置用户密码")
     public ResponseBean resetPassword(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
-        int rows = sysUserService.resetPassword(entity.getId(), PwdUtils.md5Encode("123456",entity.getLoginName()));
+        int rows = sysUserService.resetPassword(entity);
         if (rows > 0) {
             responseBean.setResults(true);
             responseBean.setMessage("重置密码成功！");

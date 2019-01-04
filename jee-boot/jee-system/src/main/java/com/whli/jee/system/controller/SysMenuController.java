@@ -2,21 +2,21 @@ package com.whli.jee.system.controller;
 
 import com.whli.jee.core.page.Page;
 import com.whli.jee.core.util.BeanUtils;
-import com.whli.jee.core.util.CollectionUtils;
 import com.whli.jee.core.util.StringUtils;
 import com.whli.jee.core.util.WebUtils;
 import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.BaseTree;
 import com.whli.jee.core.web.entity.ResponseBean;
-import com.whli.jee.system.entity.SysDict;
 import com.whli.jee.system.entity.SysMenu;
 import com.whli.jee.system.service.ISysMenuService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.CodeFlow;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -29,6 +29,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/system/sysMenu")
+@Api(description = "系统菜单API")
 public class SysMenuController extends BaseController<SysMenu> {
 
     @Autowired
@@ -41,6 +42,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询系统菜单")
     @Override
     public ResponseBean findByPage(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -62,6 +64,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiOperation("增加菜单")
     @Override
     public ResponseBean add(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -80,6 +83,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/update")
+    @ApiOperation("修改菜单")
     @Override
     public ResponseBean update(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -97,6 +101,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiOperation("删除菜单")
     @Override
     public ResponseBean delete(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -113,6 +118,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiOperation("根据ID查询菜单")
     @Override
     public SysMenu findByPK(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         return sysMenuService.findByPK(entity.getId());
@@ -126,6 +132,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @throws Exception
      */
     @PostMapping(value = "/findByNo")
+    @ApiIgnore
     @Override
     public SysMenu findByNo(SysMenu entity, HttpServletRequest req) throws Exception {
         return null;
@@ -139,6 +146,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @throws Exception
      */
     @PostMapping(value = "/findByName")
+    @ApiOperation("根据系统菜单名称查询")
     @Override
     public SysMenu findByName(SysMenu entity, HttpServletRequest req) throws Exception {
         return sysMenuService.findByName(entity.getName());
@@ -151,6 +159,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiOperation("查询所有系统菜单")
     @Override
     public List<SysMenu> findAll(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         return sysMenuService.findAll(entity);
@@ -162,6 +171,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/findByTree")
+    @ApiOperation("根据角色ID树形展示菜单")
     public List<BaseTree> findByTree(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         return sysMenuService.findByTree(entity.getRoleId());
     }
@@ -174,6 +184,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/menuTree")
+    @ApiOperation("查询登录用户的授权菜单")
     public List<SysMenu> menuTree(@RequestBody SysMenu entity, HttpServletRequest rq) throws Exception {
         //获取父菜单
         List<SysMenu> sysMenus = sysMenuService.findMenusByUserId(WebUtils.getLoginUserId(), entity.getParentId());
@@ -188,6 +199,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/getButtons")
+    @ApiOperation("查询菜单拥有的按钮")
     public List<SysMenu> getButtons(@RequestBody SysMenu entity, HttpServletRequest rq) throws Exception {
         //获取父菜单
         List<SysMenu> buttons = sysMenuService.findButtonsByParentUrlAndUserId(WebUtils.getLoginUserId(), entity.getHref());
@@ -200,6 +212,7 @@ public class SysMenuController extends BaseController<SysMenu> {
      * @return
      */
     @PostMapping(value = "/findByParentIdAndSort")
+    @ApiOperation("查询同级别下是否存在相同序号")
     public String findByParentIdAndSort(SysMenu entity){
         SysMenu temp = sysMenuService.findByParentIdAndSort(entity);
         if (BeanUtils.isNotNull(temp)){

@@ -29,19 +29,18 @@
 		</style>
 	</head>
 
-	<body class="login-layout">
+	<body class="login-layout" style="background-image: url(../static/ace/images/bg-img.jpg);">
 		<div class="main-container">
 			<div class="main-content">
-				<div class="row">
+				<div class="row" style="height: 450px;">
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
 								<h1>
-                            <i class="ace-icon fa fa-leaf green"></i>
-                            <span class="red">JEEWHL</span>
-                            <span class="white" id="id-text2">Application</span>
-                        </h1>
-								<h4 class="blue" id="id-company-text">&copy; 立群工作室</h4>
+									<i class="ace-icon fa fa-leaf green"></i>
+									<span class="red">JEEWHL</span>
+									<span class="white" id="id-text2">Application</span>
+								</h1>
 							</div>
 							<div class="space-6"></div>
 
@@ -50,9 +49,9 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
-                                        <i class="ace-icon fa fa-coffee green"></i>
-                                        请 登 录
-                                    </h4>
+												<i class="ace-icon fa fa-coffee green"></i>
+												请 登 录
+											</h4>
 
 											<div class="space-6"></div>
 
@@ -60,30 +59,25 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" />
+															<input type="text" id="loginName" name="loginName" class="form-control" placeholder="请输入用户名" autofocus/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
-                                            </label>
+													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="password" id="password" name="password" class="form-control" placeholder="请输入密码" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
-                                            </label>
+													</label>
 
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
-                                                    <input id="remember" name="remember" type="checkbox" class="ace" />
-                                                    <span class="lbl"> 自动登录 </span>
-                                                </label>
-
 														<button id="loginButn" type="button" class="width-35 pull-right btn btn-sm btn-primary">
-                                                    <i class="ace-icon fa fa-key"></i>
-                                                    <span class="bigger-110">登  录</span>
-                                                </button>
+															<i class="ace-icon fa fa-key"></i>
+															<span class="bigger-110">登 录</span>
+														</button>
 													</div>
 
 													<div class="space-4"></div>
@@ -94,6 +88,7 @@
 
 											<div class="space-6"></div>
 											<div id="msg-wrap" style="min-height: 23px;margin-top: 5px;margin-bottom: 5px;height: auto!important;">
+												<div style="text-align: center;"><span>&copy; 立群工作室</span></div>
 												<div id="msg-error">
 													<i class="fa fa-times-circle"></i>
 													<span></span>
@@ -101,146 +96,10 @@
 											</div>
 										</div>
 										<!-- /.widget-main -->
-
-										<div class="toolbar clearfix">
-											<!-- <div>
-												<a href="#" data-target="#forgot-box" class="forgot-password-link">
-													<i class="ace-icon fa fa-arrow-left"></i> I forgot my password
-												</a>
-											</div>
-
-											<div>
-												<a href="#" data-target="#signup-box" class="user-signup-link">
-													I want to register
-													<i class="ace-icon fa fa-arrow-right"></i>
-												</a>
-											</div> -->
-										</div>
 									</div>
 									<!-- /.widget-body -->
 								</div>
 								<!-- /.login-box -->
-
-								<div id="forgot-box" class="forgot-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-                                        <i class="ace-icon fa fa-key"></i>
-                                        Retrieve Password
-                                    </h4>
-
-											<div class="space-6"></div>
-											<p>
-												Enter your email and to receive instructions
-											</p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-												<span class="block input-icon input-icon-right">
-													<input type="email" class="form-control" placeholder="Email" />
-													<i class="ace-icon fa fa-envelope"></i>
-												</span>
-                                            </label>
-
-													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
-                                                    <i class="ace-icon fa fa-lightbulb-o"></i>
-                                                    <span class="bigger-110">Send Me!</span>
-                                                </button>
-													</div>
-												</fieldset>
-											</form>
-										</div>
-										<!-- /.widget-main -->
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												Back to login
-												<i class="ace-icon fa fa-arrow-right"></i>
-											</a>
-										</div>
-									</div>
-									<!-- /.widget-body -->
-								</div>
-								<!-- /.forgot-box -->
-
-								<div id="signup-box" class="signup-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header green lighter bigger">
-                                        <i class="ace-icon fa fa-users blue"></i>
-                                        New User Registration
-                                    </h4>
-
-											<div class="space-6"></div>
-											<p> Enter your details to begin: </p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-                                            </label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-                                            </label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-                                            </label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Repeat password" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
-                                            </label>
-
-													<label class="block">
-                                                <input type="checkbox" class="ace" />
-                                                <span class="lbl">
-															I accept the
-															<a href="#">User Agreement</a>
-														</span>
-                                            </label>
-
-													<div class="space-24"></div>
-
-													<div class="clearfix">
-														<button type="reset" class="width-30 pull-left btn btn-sm">
-                                                    <i class="ace-icon fa fa-refresh"></i>
-                                                    <span class="bigger-110">Reset</span>
-                                                </button>
-
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
-                                                    <span class="bigger-110">Register</span>
-
-                                                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                                                </button>
-													</div>
-												</fieldset>
-											</form>
-										</div>
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												<i class="ace-icon fa fa-arrow-left"></i> Back to login
-											</a>
-										</div>
-									</div>
-									<!-- /.widget-body -->
-								</div>
-								<!-- /.signup-box -->
 							</div>
 							<!-- /.position-relative -->
 						</div>
@@ -280,7 +139,7 @@
 						// Add the `help-block` class to the error element
 						error.addClass("help-block");
 
-						if(element.prop("type") === "checkbox") {
+						if (element.prop("type") === "checkbox") {
 							error.insertAfter(element.parent("label"));
 						} else {
 							error.insertAfter(element);
@@ -301,9 +160,9 @@
 
 				$("#loginButn").on('click', function() {
 
-					if($("#loginForm").valid()) {
+					if ($("#loginForm").valid()) {
 						var remember = "";
-						if($("#remember").prop('checked')) {
+						if ($("#remember").prop('checked')) {
 							var remember = 1;
 						}
 
@@ -311,7 +170,7 @@
 							username: $("#loginName").val(),
 							password: $("#password").val()
 						}, function(data) {
-							if(!data.results) {
+							if (!data.results) {
 								$("#msg-error").css("visibility", "visible");
 								$("#msg-error span").text(data.message);
 								return;
@@ -326,10 +185,8 @@
 					}
 				});
 
-				$("#loginName").focus();
-
 				$(document).keydown(function(event) {
-					if(event.keyCode == 13) {
+					if (event.keyCode == 13) {
 						$("#loginButn").click();
 					}
 				});

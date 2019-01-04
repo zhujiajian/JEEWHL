@@ -7,6 +7,8 @@ import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysRole;
 import com.whli.jee.system.service.ISysRoleMenuService;
 import com.whli.jee.system.service.ISysRoleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +25,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/system/sysRole")
+@Api(description = "系统角色API")
 public class SysRoleController extends BaseController<SysRole> {
 
     @Autowired
@@ -37,6 +40,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/findByPage")
+    @ApiOperation("分页查询系统角色")
     @Override
     public ResponseBean findByPage(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -55,6 +59,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/add")
+    @ApiOperation("增加系统角色")
     @Override
     public ResponseBean add(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -75,6 +80,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @throws Exception
      */
     @PostMapping(value = "/update")
+    @ApiOperation("修改系统角色")
     @Override
     public ResponseBean update(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -92,6 +98,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/delete")
+    @ApiOperation("删除系统角色")
     @Override
     public ResponseBean delete(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
@@ -106,6 +113,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/findByPK")
+    @ApiOperation("根据ID查询系统角色")
     @Override
     public SysRole findByPK(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findByPK(entity.getId());
@@ -116,6 +124,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/findByNo")
+    @ApiOperation("根据角色编码查询")
     @Override
     public SysRole findByNo(SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findByNo(entity.getNo());
@@ -126,6 +135,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/findByName")
+    @ApiOperation("根据角色名称查询")
     @Override
     public SysRole findByName(SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findByName(entity.getName());
@@ -137,6 +147,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/findAll")
+    @ApiOperation("查询所有系统角色")
     @Override
     public List<SysRole> findAll(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findAll(entity);
@@ -147,6 +158,7 @@ public class SysRoleController extends BaseController<SysRole> {
      * @return
      */
     @PostMapping(value = "/grantByRole")
+    @ApiOperation("给角色授权菜单")
     public ResponseBean grantByRole(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         ResponseBean responseBean = new ResponseBean();
         int rows = sysRoleMenuService.grantByRole(entity.getId(),entity.getMenuIds());
@@ -158,6 +170,7 @@ public class SysRoleController extends BaseController<SysRole> {
     }
 
     @PostMapping(value = "/findByUser")
+    @ApiOperation("查询登录用户拥有的角色")
     public ResponseBean findRolesByUserId(@RequestBody SysRole entity, HttpServletRequest req) throws Exception{
         ResponseBean responseBean = new ResponseBean();
         List<SysRole> roles = sysRoleService.findRolesByUserId(entity.getUserId());
