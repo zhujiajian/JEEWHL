@@ -2,6 +2,7 @@ package com.whli.jee.system.service.impl;
 
 import com.whli.jee.core.exception.ApplicationException;
 import com.whli.jee.core.util.ArrayUtils;
+import com.whli.jee.core.util.CollectionUtils;
 import com.whli.jee.core.util.StringUtils;
 import com.whli.jee.core.web.dao.IBaseDao;
 import com.whli.jee.core.web.service.impl.BaseServiceImpl;
@@ -37,7 +38,7 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenu> impleme
         }
 
         List<SysRoleMenu> sysRoleMenus = new ArrayList<SysRoleMenu>();
-        if (ArrayUtils.isNotNullOrEmpty(menuIds)){
+        if (CollectionUtils.isNotNullOrEmpty(menuIds)){
             sysRoleMenuDao.deleteByRole(roleId);//根据角色删除权限
 
             for (String menuId : menuIds){

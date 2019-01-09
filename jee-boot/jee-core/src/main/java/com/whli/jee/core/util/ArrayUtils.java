@@ -16,7 +16,7 @@ public class ArrayUtils {
      * @param objects
      * @return
      */
-    public static boolean isNullOrEmpty(Object... objects){
+    public static boolean isNullOrEmpty(Object[] objects){
         if (objects == null || objects.length == 0){
             return true;
         }
@@ -28,7 +28,7 @@ public class ArrayUtils {
      * @param objects
      * @return
      */
-    public static boolean isNotNullOrEmpty(Object... objects){
+    public static boolean isNotNullOrEmpty(Object[] objects){
         return !isNullOrEmpty(objects);
     }
 
@@ -37,7 +37,7 @@ public class ArrayUtils {
      * @param objects
      * @return
      */
-    public static List transToList(Object... objects){
+    public static List transToList(Object[] objects){
         return Arrays.asList(objects);
     }
 
@@ -46,7 +46,7 @@ public class ArrayUtils {
      * @param objects
      * @return
      */
-    public static Set transToSet(Object... objects){
+    public static Set transToSet(Object[] objects){
         return new HashSet(transToList(objects));
     }
 }

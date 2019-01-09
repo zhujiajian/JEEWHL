@@ -89,6 +89,7 @@ public interface IBaseService<T> {
      * 导出Excel
      * @param response
      */
+    @Transactional
     public void exportExcel(T entity, HttpServletResponse response);
 
     /**
@@ -109,5 +110,6 @@ public interface IBaseService<T> {
      * 导入模板
      * @param response
      */
+    @Transactional
     public void exportTemplate(T entity, HttpServletResponse response);
 }

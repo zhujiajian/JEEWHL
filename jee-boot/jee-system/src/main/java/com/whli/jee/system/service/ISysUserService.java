@@ -2,6 +2,7 @@ package com.whli.jee.system.service;
 
 import com.whli.jee.core.web.service.IBaseService;
 import com.whli.jee.system.entity.SysUser;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -63,6 +64,7 @@ public interface ISysUserService extends IBaseService<SysUser> {
      * @Params [userId, roleIds]
      * @Return void
      */
+    @Transactional
     public int grantByUser(String userId, List<String> roleIds);
 
     /**
@@ -70,5 +72,6 @@ public interface ISysUserService extends IBaseService<SysUser> {
      * @param entity
      * @return
      */
+    @Transactional
     public int resetPassword(SysUser entity);
 }

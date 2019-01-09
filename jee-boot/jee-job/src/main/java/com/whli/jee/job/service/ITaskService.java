@@ -2,6 +2,7 @@ package com.whli.jee.job.service;
 
 import com.whli.jee.core.web.service.IBaseService;
 import com.whli.jee.job.entity.Task;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>类功能<p>
@@ -16,6 +17,7 @@ public interface ITaskService extends IBaseService<Task> {
      * @param entity
      * @return
      */
+    @Transactional
     public Boolean startTask(Task entity);
 
     /**
@@ -23,17 +25,20 @@ public interface ITaskService extends IBaseService<Task> {
      * @param entity
      * @return
      */
+    @Transactional
     public Boolean stopTask(Task entity);
 
     /**
      * 开始所有任务
      * @return
      */
+    @Transactional
     public Boolean startAll();
 
     /**
      * 停止所有任务
      * @return
      */
+    @Transactional
     public Boolean stopAll();
 }

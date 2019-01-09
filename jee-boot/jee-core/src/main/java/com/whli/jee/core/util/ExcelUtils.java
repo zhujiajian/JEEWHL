@@ -156,7 +156,7 @@ public class ExcelUtils {
 
         Workbook workbook = new HSSFWorkbook(stream);
 
-        if (workbook == null || ArrayUtils.isNullOrEmpty(headers)){
+        if (workbook == null || headers == null || headers.length == 0){
             throw new ApplicationException("-01080604","未找到需要导入的文件！");
         }
         //获取类字段

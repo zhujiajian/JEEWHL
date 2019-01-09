@@ -45,15 +45,6 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
     @Qualifier(value = "scheduler")
     private Scheduler scheduler;
 
-    public TaskServiceImpl() {
-        /*try {
-            SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
-            this.scheduler = schedulerFactory.getScheduler();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-    }
-
     @Override
     public IBaseDao<Task> getDao() {
         return taskDao;
