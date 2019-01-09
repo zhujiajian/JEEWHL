@@ -42,14 +42,14 @@ public interface IBaseDao<T> {
      * @param No
      * @return
      */
-    public T findByNo(@Param("No") String No);
+    public T findByNo(@Param("no") String No);
 
     /**
      * 根据名称查询
      * @param name
      * @return
      */
-    public T findByName(@Param("Name") String name);
+    public T findByName(@Param("name") String name);
 
     /**
      * 分页查询

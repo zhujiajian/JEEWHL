@@ -2,7 +2,11 @@ package com.whli.jee.core.web.service;
 
 
 import com.whli.jee.core.page.Page;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -13,6 +17,7 @@ public interface IBaseService<T> {
     /**
      * 创建
      **/
+    @Transactional
     public int add(T entity);
 
     /**
@@ -20,11 +25,13 @@ public interface IBaseService<T> {
      * @param entities
      * @return
      */
+    @Transactional
     public int addMore(List<T> entities);
 
     /**
      * 更新
      **/
+    @Transactional
     public int update(T entity);
 
     /**
@@ -32,18 +39,21 @@ public interface IBaseService<T> {
      * @param entities
      * @return
      */
+    @Transactional
     public int updateMore(List<T> entities);
 
     /**
      * 删除
      **/
+    @Transactional
     public void delete(T entity);
 
     /**
      * 批量删除
-     * @param ids
+     * @param entity
      * @return
      */
+    @Transactional
     public void deleteMore(T entity);
 
     /**
@@ -75,4 +85,29 @@ public interface IBaseService<T> {
      */
     public List<T> findAll(T entity);
 
+    /**
+     * 导出Excel
+     * @param response
+     */
+    public void exportExcel(T entity, HttpServletResponse response);
+
+    /**
+     * 导入Excel
+     * @return
+     */
+    @Transactional
+    public int importExcel(File file);
+
+    /**
+     * 导入Excel
+     * @return
+     */
+    @Transactional
+    public int importExcel(InputStream stream);
+
+    /**
+     * 导入模板
+     * @param response
+     */
+    public void exportTemplate(T entity, HttpServletResponse response);
 }

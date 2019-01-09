@@ -1,0 +1,274 @@
+2019-01-08 16:55:46 [restartedMain] [StartupInfoLogger.java/51] DEBUG - Running with Spring Boot v1.5.10.RELEASE, Spring v4.3.14.RELEASE
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [QuartzScheduler_schedulerFactory-whli-PC1546937755029_MisfireHandler] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:56:58 [schedulerFactory_QuartzSchedulerThread] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:57:13 [QuartzScheduler_schedulerFactory-whli-PC1546937755029_ClusterManager] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:57:13 [QuartzScheduler_schedulerFactory-whli-PC1546937755029_ClusterManager] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:57:58 [QuartzScheduler_schedulerFactory-whli-PC1546937755029_MisfireHandler] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:58:20 [schedulerFactory_QuartzSchedulerThread] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 16:58:53 [http-nio-8088-exec-2] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT ts_sys_user_id,office_id,login_name,password,no,name,email,phone,photo,login_ip,login_date,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_user WHERE login_name = ? AND password = ? 
+2019-01-08 16:58:53 [http-nio-8088-exec-2] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: admin(String), B9D11B3BE25F5A1A7DC8CA04CD310B28(String)
+2019-01-08 16:58:53 [http-nio-8088-exec-2] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 1
+2019-01-08 16:58:53 [http-nio-8088-exec-2] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220000} enter cache
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 0(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 3
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220001} enter cache
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 1(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 7
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 2(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 3351F558EADA11E7A6D0507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: AF95DBF4EAE511E7A6D0507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: C00E62F9EF7C11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 151554F4EF7D11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 6B1C3270EF7D11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: BBC5667467A74EDCAB1FAE40053841A8(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: A4FA9839EF9C11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 1
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 9F6451C6EFAF11E7A72A507B9DC552FD(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 8542004A6DE744E2BCD9758B05AE4BC7(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 832C1B309E114648AD0C37A2AB813F09(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: D2F1639EC6BF4E9AA6C217358CC7A952(String), 1(String)
+2019-01-08 16:58:54 [http-nio-8088-exec-5] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-9] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.* FROM ts_sys_menu a INNER JOIN ts_sys_menu f ON a.parent_id = f.ts_sys_menu_id INNER JOIN tr_sys_role_menu b ON a.ts_sys_menu_id = b.ts_sys_menu_id INNER JOIN ts_sys_role c ON b.ts_sys_role_id = c.ts_sys_role_id INNER JOIN tr_sys_user_role d ON c.ts_sys_role_id = d.ts_sys_role_id INNER JOIN ts_sys_user e ON d.ts_sys_user_id = e.ts_sys_user_id WHERE a. ENABLE = '1' AND a.target = 'BUTTON' AND f.href LIKE '%SysRoleList.html%' AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-9] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 1(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-9] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-9] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220002} enter cache
+2019-01-08 16:58:59 [http-nio-8088-exec-12] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT ts_sys_dict_id,parent_id,value,name,sort,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_dict WHERE parent_id = (SELECT m.ts_sys_dict_id FROM ts_sys_dict m WHERE m.value = ?) ORDER BY sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-12] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: YES_NO(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-12] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:58:59 [http-nio-8088-exec-12] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220003} enter cache
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id IS NULL ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 1
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: select count(1) from (SELECT ts_sys_role_id,name,no,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_role ORDER BY no) tmp 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220004} enter cache
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [PreparedStatementPool.java/129] DEBUG - {conn-210002, pstmt-220005} enter cache
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [ReflectUtils.java/38] DEBUG - java.lang.NoSuchMethodException: org.apache.ibatis.mapping.BoundSql.setSql()
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 0(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT ts_sys_role_id,name,no,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_role ORDER BY no limit 0,10 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 3
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220006} enter cache
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-15] [PreparedStatementPool.java/129] DEBUG - {conn-210002, pstmt-220007} enter cache
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 1(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 7
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 2(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 3
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: CA42B39FD2864EEA9553FABF839E7A6D(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 2A98FA51182041B6B669809DDB30BC19(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 3CC81ADE1F5D4EEC862AB39911013B8A(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 3351F558EADA11E7A6D0507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: AF95DBF4EAE511E7A6D0507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: C00E62F9EF7C11E79CCA507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 151554F4EF7D11E79CCA507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 6B1C3270EF7D11E79CCA507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: BBC5667467A74EDCAB1FAE40053841A8(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: A4FA9839EF9C11E79CCA507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: b5a1b55bfa3a4a86a5db06a6dc681156(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 9F6451C6EFAF11E7A72A507B9DC552FD(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 8542004A6DE744E2BCD9758B05AE4BC7(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 832C1B309E114648AD0C37A2AB813F09(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.ts_sys_menu_id id,a.parent_id pid,a.name FROM ts_sys_menu a WHERE 1=1 AND a.parent_id = ? ORDER BY a.sort 
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: D2F1639EC6BF4E9AA6C217358CC7A952(String)
+2019-01-08 16:58:59 [http-nio-8088-exec-16] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 0(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 3
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 1(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 7
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 2(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 3351F558EADA11E7A6D0507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: AF95DBF4EAE511E7A6D0507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: C00E62F9EF7C11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 151554F4EF7D11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 6B1C3270EF7D11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: BBC5667467A74EDCAB1FAE40053841A8(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: A4FA9839EF9C11E79CCA507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 1
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 9F6451C6EFAF11E7A72A507B9DC552FD(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 8542004A6DE744E2BCD9758B05AE4BC7(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 832C1B309E114648AD0C37A2AB813F09(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT DISTINCT a.* FROM ts_sys_menu a,tr_sys_role_menu b,ts_sys_role c,tr_sys_user_role d,ts_sys_user e WHERE a.ts_sys_menu_id = b.ts_sys_menu_id AND b.ts_sys_role_id = c.ts_sys_role_id AND c.ts_sys_role_id = d.ts_sys_role_id AND d.ts_sys_user_id = e.ts_sys_user_id AND a.enable = '1' AND (a.target != 'BUTTON' OR a.target is null) AND a.parent_id = ? AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: D2F1639EC6BF4E9AA6C217358CC7A952(String), 1(String)
+2019-01-08 16:59:25 [http-nio-8088-exec-7] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:32 [http-nio-8088-exec-19] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT ts_sys_dict_id,parent_id,value,name,sort,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_dict WHERE parent_id = (SELECT m.ts_sys_dict_id FROM ts_sys_dict m WHERE m.value = ?) ORDER BY sort 
+2019-01-08 16:59:32 [http-nio-8088-exec-19] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: YES_NO(String)
+2019-01-08 16:59:32 [http-nio-8088-exec-19] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 2
+2019-01-08 16:59:32 [http-nio-8088-exec-20] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.* FROM ts_sys_menu a INNER JOIN ts_sys_menu f ON a.parent_id = f.ts_sys_menu_id INNER JOIN tr_sys_role_menu b ON a.ts_sys_menu_id = b.ts_sys_menu_id INNER JOIN ts_sys_role c ON b.ts_sys_role_id = c.ts_sys_role_id INNER JOIN tr_sys_user_role d ON c.ts_sys_role_id = d.ts_sys_role_id INNER JOIN ts_sys_user e ON d.ts_sys_user_id = e.ts_sys_user_id WHERE a. ENABLE = '1' AND a.target = 'BUTTON' AND f.href LIKE '%SysUserList.html%' AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:32 [http-nio-8088-exec-20] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 1(String)
+2019-01-08 16:59:32 [http-nio-8088-exec-20] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:32 [http-nio-8088-exec-20] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220008} enter cache
+2019-01-08 16:59:32 [http-nio-8088-exec-13] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.* FROM ts_sys_menu a INNER JOIN ts_sys_menu f ON a.parent_id = f.ts_sys_menu_id INNER JOIN tr_sys_role_menu b ON a.ts_sys_menu_id = b.ts_sys_menu_id INNER JOIN ts_sys_role c ON b.ts_sys_role_id = c.ts_sys_role_id INNER JOIN tr_sys_user_role d ON c.ts_sys_role_id = d.ts_sys_role_id INNER JOIN ts_sys_user e ON d.ts_sys_user_id = e.ts_sys_user_id WHERE a. ENABLE = '1' AND a.target = 'BUTTON' AND f.href LIKE '%SysUserList.html%' AND e.ts_sys_user_id = ? ORDER BY a.sort 
+2019-01-08 16:59:32 [http-nio-8088-exec-13] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 1(String)
+2019-01-08 16:59:32 [http-nio-8088-exec-13] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:32 [http-nio-8088-exec-14] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT a.* FROM ts_sys_role a,tr_sys_user_role b WHERE a.ts_sys_role_id = b.ts_sys_role_id AND b.ts_sys_user_id = ? ORDER BY no 
+2019-01-08 16:59:32 [http-nio-8088-exec-14] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: -1(String)
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: select count(1) from (SELECT ts_sys_user_id,office_id,login_name,password,no,name,email,phone,photo,login_ip,login_date,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_user ORDER BY login_name) tmp 
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 
+2019-01-08 16:59:32 [http-nio-8088-exec-14] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 0
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [PreparedStatementPool.java/129] DEBUG - {conn-210002, pstmt-220010} enter cache
+2019-01-08 16:59:32 [http-nio-8088-exec-14] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220009} enter cache
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [ReflectUtils.java/38] DEBUG - java.lang.NoSuchMethodException: org.apache.ibatis.mapping.BoundSql.setSql()
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: SELECT ts_sys_user_id,office_id,login_name,password,no,name,email,phone,photo,login_ip,login_date,create_by,create_date,update_by,update_date,remark,enable FROM ts_sys_user ORDER BY login_name limit 0,10 
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [BaseJdbcLogger.java/159] DEBUG - <==      Total: 1
+2019-01-08 16:59:32 [http-nio-8088-exec-17] [PreparedStatementPool.java/129] DEBUG - {conn-210002, pstmt-220011} enter cache
+2019-01-08 17:01:36 [QuartzScheduler_schedulerFactory-whli-PC1546937755029_ClusterManager] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:01:36 [QuartzScheduler_schedulerFactory-whli-PC1546937755029_ClusterManager] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:01:56 [restartedMain] [StartupInfoLogger.java/51] DEBUG - Running with Spring Boot v1.5.10.RELEASE, Spring v4.3.14.RELEASE
+2019-01-08 17:03:25 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:25 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:25 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [Quartz Scheduler [schedulerFactory]] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [QuartzScheduler_schedulerFactory-whli-PC1546938124195_MisfireHandler] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [schedulerFactory_QuartzSchedulerThread] [PreparedStatementPool.java/129] DEBUG - stmt enter cache
+2019-01-08 17:03:27 [http-nio-8088-exec-1] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: insert into tl_sys_log (tl_sys_log_id,type,table_name,operation_detail,request_uri,ip,host_name,create_by,create_date) values(?,?,?,?,?,?,?,?,?) 
+2019-01-08 17:03:27 [http-nio-8088-exec-1] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: BE7EEC01960A42BC8E6DA5DBA5A5F4BC(String), ADD(String), INSERT INTO ts_sys_user
+		 ( ts_sys_user_id,
+			
+			
+			
+				login_name,
+			
+			
+			
+				no,
+			
+			
+				name,
+			
+			
+				email,
+			
+			
+				phone,
+			
+			
+			
+			
+			
+				create_by,
+			
+			
+				create_date ) 
+		 values ( ?,
+			
+			
+			
+				?,
+			
+			
+			
+				?,
+			
+			
+				?,
+			
+			
+				?,
+			
+			
+				?,
+			
+			
+			
+			
+			
+				?,
+			
+			
+				? )(String), {7124C609D47D4656A01C49DF70EA06CD, 工号, 工号, 工号, 工号, 工号, admin, 2019-01-08 17:03:27}(String), http://127.0.0.1:8088/jee/system/sysUser/importExcel(String), 192.168.1.112(String), 127.0.0.1(String), admin(String), 2019-01-08 17:03:27.595(Timestamp)
+2019-01-08 17:03:27 [http-nio-8088-exec-1] [PreparedStatementPool.java/129] DEBUG - {conn-210001, pstmt-220000} enter cache
+2019-01-08 17:03:27 [http-nio-8088-exec-1] [BaseJdbcLogger.java/159] DEBUG - ==>  Preparing: INSERT INTO ts_sys_user ( ts_sys_user_id, login_name, no, name, email, phone, create_by, create_date ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2019-01-08 17:03:27 [http-nio-8088-exec-1] [BaseJdbcLogger.java/159] DEBUG - ==> Parameters: 7124C609D47D4656A01C49DF70EA06CD(String), 工号(String), 工号(String), 工号(String), 工号(String), 工号(String), admin(String), 2019-01-08 17:03:27.504(Timestamp)
+2019-01-08 17:03:27 [http-nio-8088-exec-1] [PreparedStatementPool.java/160] DEBUG - {conn-210001, pstmt-220001} exit cache

@@ -34,11 +34,11 @@ public class SysUserRoleServiceImpl extends BaseServiceImpl<SysUserRole> impleme
 
     public void deleteByUser(SysUserRole entity) {
         if (StringUtils.isNullOrBlank(entity.getUserId())) {
-            throw new ApplicationException("-02010803", "请选择需要删除角色的用户！");
+            throw new ApplicationException("-02060801", "请选择需要删除角色的用户！");
         }
 
         if(CollectionUtils.isNullOrEmpty(entity.getRoleIds())){
-            throw new ApplicationException("-02010803", "请选择至少一条需要删除的角色！");
+            throw new ApplicationException("-02060802", "请选择至少一条需要删除的角色！");
         }
         sysUserRoleDao.deleteByUser(entity);
     }

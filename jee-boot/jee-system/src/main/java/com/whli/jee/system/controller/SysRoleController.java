@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -151,6 +154,24 @@ public class SysRoleController extends BaseController<SysRole> {
     @Override
     public List<SysRole> findAll(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findAll(entity);
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportExcel(SysRole entity, HttpServletResponse response) throws Exception {
+
+    }
+
+    @ApiIgnore
+    @Override
+    public ResponseBean importExcel(MultipartFile file) throws Exception {
+        return null;
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportTemplate(SysRole entity, HttpServletResponse response) throws Exception {
+
     }
 
     /**

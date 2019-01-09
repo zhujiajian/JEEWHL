@@ -31,7 +31,7 @@ public class SysDictServiceImpl extends BaseServiceImpl<SysDict> implements ISys
 
 	public List<SysDict> findByParentValue(String value) {
 		if(StringUtils.isNullOrBlank(value)){
-			throw  new ApplicationException("-02010301","父字典值不能为空！");
+			throw  new ApplicationException("-02060201","父字典值不能为空！");
 		}
 		return sysDictDao.findByParentValue(value);
 	}

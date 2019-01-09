@@ -33,7 +33,7 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenu> impleme
     @Override
     public int grantByRole(String roleId, List<String> menuIds) {
         if (StringUtils.isNullOrBlank(roleId)) {
-            throw new ApplicationException("-02010801", "请选择需要授权的角色！");
+            throw new ApplicationException("-02060601", "请选择需要授权的角色！");
         }
 
         List<SysRoleMenu> sysRoleMenus = new ArrayList<SysRoleMenu>();

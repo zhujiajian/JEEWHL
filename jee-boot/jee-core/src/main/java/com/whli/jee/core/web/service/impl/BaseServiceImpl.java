@@ -1,17 +1,19 @@
 package com.whli.jee.core.web.service.impl;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.whli.jee.core.exception.ApplicationException;
 import com.whli.jee.core.page.Page;
-import com.whli.jee.core.util.BeanUtils;
-import com.whli.jee.core.util.CollectionUtils;
-import com.whli.jee.core.util.StringUtils;
-import com.whli.jee.core.util.WebUtils;
+import com.whli.jee.core.util.*;
 import com.whli.jee.core.web.dao.IBaseDao;
 import com.whli.jee.core.web.entity.BaseEntity;
 import com.whli.jee.core.web.service.IBaseService;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -187,6 +189,44 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public List<T> findAll(T entity){
         return getDao().findAll(entity);
+    }
+
+    /**
+     * 导出Excel
+     * @param response
+     */
+    @Override
+    public void exportExcel(T entity, HttpServletResponse response) {
+
+    }
+
+    /**
+     * 导入Excel
+     * @param file
+     * @return
+     */
+    @Override
+    public int importExcel(File file) {
+        return 0;
+    }
+
+    /**
+     * 导入Excel
+     * @param stream
+     * @return
+     */
+    @Override
+    public int importExcel(InputStream stream) {
+        return 0;
+    }
+
+    /**
+     * 导入模板
+     * @param response
+     */
+    @Override
+    public void exportTemplate(T entity, HttpServletResponse response) {
+
     }
 
 }

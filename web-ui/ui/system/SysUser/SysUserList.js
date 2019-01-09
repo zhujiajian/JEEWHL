@@ -84,7 +84,7 @@ $(function () {
 			},
 			{
 				btnId: "btn_reset",
-				btnCss: "btn btn-info",
+				btnCss: "btn btn-warning",
 				btnText: "重置密码",
 				otherOptions: [{
 					id: "tb_data",
@@ -107,6 +107,30 @@ $(function () {
 							$("#tb_data").bootstrapTable("refresh");
 						});
 					});
+				}
+			},
+			{
+				btnId: "btn_exportTemplate",
+				btnCss: "btn btn-inverse",
+				btnText: "导出模板",
+				btnClick: function () {
+					location.href = apiUrl+"/system/sysUser/exportTemplate";
+				}
+			},
+			{
+				btnId: "btn_import",
+				btnCss: "btn btn-success",
+				btnText: "导入",
+				btnClick: function () {
+					showUploadDialog();
+				}
+			},
+			{
+				btnId: "btn_export",
+				btnCss: "btn btn-yellow",
+				btnText: "导出",
+				btnClick: function () {
+					location.href = apiUrl+"/system/sysUser/exportExcel";
 				}
 			}
 		],
@@ -375,6 +399,68 @@ function showSubDialog(change) {
 					comboId: "id",
 					comboText: "name",
 					multiple: true
+				}
+			]
+		}
+	});
+}
+
+function showUploadDialog(change) {
+	JEE.initDialog({
+		modalId: "myModal",
+		modalTitle: "上传文件",
+		btnItems: [{
+			btnId: "btn_save",
+			btnCss: "btn btn-primary",
+			btnText: "保存",
+			formId: "dataForm",
+			btnClick: function (data) {
+				var form = new FormData(document.getElementById("dataForm"));
+				$.ajax({  
+				   type: "POST",  
+				   url:apiUrl+"/system/sysUser/importExcel",  
+				   data:form, 
+				   // 下面三个参数要指定，如果不指定，会报一个JQuery的错误 
+				   cache: false,
+				   contentType: false,
+				   processData: false,
+				   async: false,  
+				   success: function(data) {
+					   if(data && data.results){
+						   if (data.message) {
+						   		layer.msg(data.message, {
+						   			icon: 6,
+						   			time: 1000
+						   		});
+						   	}
+					    } else {
+						   	if("-10005" == data.code){
+						   		JEE.confirmMsg(data.message,function(){
+						   			window.open("../../../ui/login.html","_top"); 
+						   		});
+						   	}else{
+						   		layer.msg(data.message, {
+						   			icon: 5,
+						   			time: 1000
+						   		});
+						   	}
+						}
+						$("#myModal").modal("hide");
+						$("#tb_data").bootstrapTable("refresh");
+				   }  
+			   });
+			}
+		}],
+		modalForm: {
+			formId: "dataForm",
+			defaultTable: "",
+			multipart:true,
+			formItems: [
+				{
+					id: "fileUploadFile",
+					field: "uploadFile",
+					title: "请选择文件",
+					disable: false
 				}
 			]
 		}

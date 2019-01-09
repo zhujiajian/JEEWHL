@@ -273,6 +273,9 @@ common.prototype.initForm = function ($el, modalForm) {
 	var _this = this;
 	//定义表单
 	var $form = $('<form autocomplete="off" class="form-horizontal" role="form" id="' + modalForm.formId + '"></form>');
+	if(modalForm.multipart){
+		$form.attr("enctype","multipart/form-data");
+	}
 	$form.appendTo($el);
 	var rows = {};
 	if (modalForm.defaultTable) {
@@ -413,6 +416,12 @@ common.prototype.getInput = function (item, _formGroup, _formData, inCss) {
 				}
 			}
 		});
+		$input.attr("disabled", item.disable ? item.disable : false);
+	}else if (item.id.indexOf('file') > -1) {
+		var $input = $('<input type="file" class="form-control" id="' + item.id + '" name="' + item.field + '"/>');
+		$div.append($input);
+
+		$input.attr("value", defaultValue);
 		$input.attr("disabled", item.disable ? item.disable : false);
 	}
 }

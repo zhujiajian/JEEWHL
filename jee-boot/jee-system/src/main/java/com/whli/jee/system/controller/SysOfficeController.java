@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -155,6 +157,24 @@ public class SysOfficeController extends BaseController<SysOffice> {
     @Override
     public List<SysOffice> findAll(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         return sysOfficeService.findAll(entity);
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportExcel(SysOffice entity, HttpServletResponse response) throws Exception {
+
+    }
+
+    @ApiIgnore
+    @Override
+    public ResponseBean importExcel(MultipartFile file) throws Exception {
+        return null;
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportTemplate(SysOffice entity, HttpServletResponse response) throws Exception {
+
     }
 
     /**

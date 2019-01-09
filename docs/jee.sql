@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50559
 File Encoding         : 65001
 
-Date: 2019-01-04 10:00:38
+Date: 2019-01-05 15:41:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -134,8 +134,6 @@ CREATE TABLE `qrtz_locks` (
 -- ----------------------------
 -- Records of qrtz_locks
 -- ----------------------------
-INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'STATE_ACCESS');
-INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'TRIGGER_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -166,7 +164,6 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('schedulerFactory', 'whli-PC1546566744456', '1546567197709', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -298,9 +295,6 @@ CREATE TABLE `tl_sys_log` (
 -- ----------------------------
 -- Records of tl_sys_log
 -- ----------------------------
-INSERT INTO `tl_sys_log` VALUES ('131FF50BCCA5476F8F4C7F875BB7A764', 'DELETE', 'DELETE FROM tr_sys_user_role WHERE ts_sys_user_id = ?\n		AND ts_sys_role_id in\n		 (  \n			?\n		 )', '{1, 1}', 'http://127.0.0.1:8088/jee/system/sysUser/deleteRoleByUser', '192.168.1.103', '127.0.0.1', 'admin', '2019-01-04 09:42:40', null, null);
-INSERT INTO `tl_sys_log` VALUES ('444F314829D0475191731AF5E78AC82C', 'ADD', 'INSERT INTO tr_sys_user_role\n		 ( ts_sys_user_id,\n			\n			\n				ts_sys_role_id ) \n		 values ( ?,\n			\n			\n				? )', '{1, 1}', 'http://127.0.0.1:8088/jee/system/sysUser/grantUser', '192.168.1.103', '127.0.0.1', 'admin', '2019-01-04 09:42:40', null, null);
-INSERT INTO `tl_sys_log` VALUES ('6665282CFEBF4D4E89E20D7EBDFDDBA6', 'ADD', 'INSERT INTO tr_sys_user_role\n		 ( ts_sys_user_id,\n			\n			\n				ts_sys_role_id ) \n		 values ( ?,\n			\n			\n				? )', '{1, 1}', 'http://127.0.0.1:8088/jee/system/sysUser/grantUser', '192.168.1.103', '127.0.0.1', 'admin', '2019-01-04 09:42:40', null, null);
 
 -- ----------------------------
 -- Table structure for tr_sys_role_menu

@@ -2,7 +2,6 @@ package com.whli.jee.system.controller;
 
 import com.whli.jee.core.anotation.AuthorPermit;
 import com.whli.jee.core.page.Page;
-import com.whli.jee.core.util.PwdUtils;
 import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysUser;
@@ -12,12 +11,12 @@ import com.whli.jee.system.service.ISysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -189,6 +188,34 @@ public class SysUserController extends BaseController<SysUser> {
     @Override
     public List<SysUser> findAll(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findAll(entity);
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportExcel(SysUser entity, HttpServletResponse response) throws Exception {
+
+    }
+
+    @PostMapping(value = "/importExcel")
+    @AuthorPermit
+    @ApiIgnore
+    @Override
+    public ResponseBean importExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file) throws Exception {
+        ResponseBean responseBean = new ResponseBean();
+        int rows = sysUserService.importExcel(file.getInputStream());
+        if (rows > 0) {
+            responseBean.setResults(true);
+            responseBean.setMessage("导入用户成功！");
+        }
+        return responseBean;
+    }
+
+    @GetMapping(value = "/exportTemplate")
+    @AuthorPermit
+    @ApiIgnore
+    @Override
+    public void exportTemplate(SysUser entity,HttpServletResponse response) throws Exception{
+        sysUserService.exportTemplate(entity,response);
     }
 
     /**

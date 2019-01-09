@@ -1,8 +1,10 @@
 package com.whli.jee.core.web.controller;
 
 import com.whli.jee.core.web.entity.ResponseBean;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -79,4 +81,22 @@ public abstract class BaseController<T> {
      * @throws Exception
      */
     public abstract List<T> findAll(T entity, HttpServletRequest req) throws Exception;
+
+    /**
+     * 导出Excel
+     * @param response
+     */
+    public abstract void exportExcel(T entity, HttpServletResponse response) throws Exception;
+
+    /**
+     * 导入Excel
+     * @return
+     */
+    public abstract ResponseBean importExcel(MultipartFile file) throws Exception;
+
+    /**
+     * 导入模板
+     * @param response
+     */
+    public abstract void exportTemplate(T entity, HttpServletResponse response) throws Exception;
 }

@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/scheduler/task")
 @Api(description = "定时任务API")
-public class TaskController  extends BaseController<Task> {
+public class TaskController  extends BaseController<Task>{
     @Autowired
     private ITaskService taskService;
 
@@ -103,6 +105,24 @@ public class TaskController  extends BaseController<Task> {
     @Override
     public List<Task> findAll(@RequestBody Task entity, HttpServletRequest req) throws Exception {
         return null;
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportExcel(Task entity, HttpServletResponse response) throws Exception {
+
+    }
+
+    @ApiIgnore
+    @Override
+    public ResponseBean importExcel(MultipartFile file) throws Exception {
+        return null;
+    }
+
+    @ApiIgnore
+    @Override
+    public void exportTemplate(Task entity, HttpServletResponse response) throws Exception {
+
     }
 
     /**
