@@ -418,7 +418,7 @@
         $('.nav-list').bootstrapMenu({url:'/system/sysMenu/menuTree',param:{parentId:0}});
         
         $("#logOut").on("click",function(){
-        	$.when(JEE.myAjax("/system/sysUser/logout")).done(function(result){
+        	$.when(JEE.myAjax("/logout")).done(function(result){
         		if(result){
         			sessionStorage.clear();
         			location.href = "../login.html";

@@ -1,4 +1,4 @@
-package com.whli.jee.system.config;
+package com.whli.jee.core.init;
 
 import com.whli.jee.core.web.filter.CorsFilter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

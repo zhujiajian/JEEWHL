@@ -11,7 +11,7 @@ import java.util.Date;
  * @author whli
  * @version 2018/12/24 10:04
  */
-public class Task extends BaseEntity {
+public class Scheduler extends BaseEntity {
 
     private String jobName; //任务名称
     private String jobGroup; //任务分组

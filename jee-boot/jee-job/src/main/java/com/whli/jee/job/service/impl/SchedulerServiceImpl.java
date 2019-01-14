@@ -3,31 +3,27 @@ package com.whli.jee.job.service.impl;
 import java.util.Date;
 import java.util.HashSet;
 
+import com.whli.jee.core.exception.BusinessException;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.Job;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
-import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
-import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
 
-import com.whli.jee.core.exception.ApplicationException;
 import com.whli.jee.core.util.DateUtils;
 import com.whli.jee.core.web.dao.IBaseDao;
 import com.whli.jee.core.web.service.impl.BaseServiceImpl;
-import com.whli.jee.job.dao.ITaskDao;
-import com.whli.jee.job.entity.Task;
-import com.whli.jee.job.service.ITaskService;
+import com.whli.jee.job.dao.ISchedulerDao;
+import com.whli.jee.job.entity.Scheduler;
+import com.whli.jee.job.service.ISchedulerService;
 
 /**
  * <p>定时任务<p>
@@ -35,30 +31,30 @@ import com.whli.jee.job.service.ITaskService;
  * @author whli
  * @version 2018/12/24 11:17
  */
-@Service("taskService")
-public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskService {
+@Service("schedulerService")
+public class SchedulerServiceImpl extends BaseServiceImpl<Scheduler> implements ISchedulerService {
 	
     @Autowired
-    private ITaskDao taskDao;
+    private ISchedulerDao taskDao;
 
     @Autowired
     @Qualifier(value = "scheduler")
-    private Scheduler scheduler;
+    private org.quartz.Scheduler scheduler;
 
     @Override
-    public IBaseDao<Task> getDao() {
+    public IBaseDao<Scheduler> getDao() {
         return taskDao;
     }
 
     @Override
-    public int add(Task entity) {
+    public int add(Scheduler entity) {
         String jobName = entity.getJobName(),
                 jobGroup = entity.getJobGroup(),
                 cronExpression = entity.getCronExpression(),
                 jobDescription = entity.getJobDescription();
         try{
             if (checkExists(jobName, jobGroup)) {
-                throw new ApplicationException("-03010301",String.format("Job已经存在, jobName:{%s},jobGroup:{%s}", jobName, jobGroup));
+                throw new BusinessException("-03010301",String.format("Job已经存在, jobName:{%s},jobGroup:{%s}", jobName, jobGroup));
             }
             TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
             JobKey jobKey = JobKey.jobKey(jobName, jobGroup);
@@ -71,12 +67,12 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
             scheduler.scheduleJob(jobDetail, trigger);
             return 1;
         }catch (Exception e){
-            throw new ApplicationException("-03010302","类名不存在或执行表达式错误",e);
+            throw new BusinessException("-03010302","类名不存在或执行表达式错误",e);
         }
     }
 
     @Override
-    public int update(Task entity) {
+    public int update(Scheduler entity) {
         String jobName = entity.getJobName(),
                 jobGroup = entity.getJobGroup(),
                 cronExpression = entity.getCronExpression(),
@@ -85,7 +81,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
 
         try {
             if (!checkExists(jobName, jobGroup)) {
-                throw new ApplicationException("-03010301",String.format("Job不存在, jobName:{%s},jobGroup:{%s}", jobName, jobGroup));
+                throw new BusinessException("-03010301",String.format("Job不存在, jobName:{%s},jobGroup:{%s}", jobName, jobGroup));
             }
             TriggerKey triggerKey = TriggerKey.triggerKey(jobName, jobGroup);
             JobKey jobKey = new JobKey(jobName, jobGroup);
@@ -100,12 +96,12 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
             scheduler.scheduleJob(jobDetail, triggerSet, true);
             return 1;
         } catch (SchedulerException e) {
-            throw new ApplicationException("-03010302","类名不存在或执行表达式错误",e);
+            throw new BusinessException("-03010302","类名不存在或执行表达式错误",e);
         }
     }
 
     @Override
-    public void delete(Task entity) {
+    public void delete(Scheduler entity) {
         TriggerKey triggerKey = TriggerKey.triggerKey(entity.getJobName(), entity.getJobGroup());
         try {
             if (checkExists(entity.getJobName(), entity.getJobGroup())) {
@@ -113,7 +109,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
                 scheduler.unscheduleJob(triggerKey); //移除触发器
             }
         } catch (SchedulerException e) {
-            throw new ApplicationException("-03010302",e.getMessage());
+            throw new BusinessException("-03010302",e.getMessage());
         }
     }
 
@@ -130,17 +126,17 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
     }
 
     @Override
-    public Boolean startTask(Task entity) {
+    public Boolean startTask(Scheduler entity) {
         try {
             scheduler.resumeJob(JobKey.jobKey(entity.getJobName(), entity.getJobGroup()));
             return true;
         } catch (Exception e) {
-            throw new ApplicationException("-03010302",e.getMessage());
+            throw new BusinessException("-03010302",e.getMessage());
         }
     }
 
     @Override
-    public Boolean stopTask(Task entity) {
+    public Boolean stopTask(Scheduler entity) {
         TriggerKey triggerKey = TriggerKey.triggerKey(entity.getJobName(), entity.getJobGroup());
         try {
             if (checkExists(entity.getJobName(), entity.getJobGroup())) {
@@ -149,7 +145,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ApplicationException("-03010302",e.getMessage());
+            throw new BusinessException("-03010302",e.getMessage());
         }
     }
 
@@ -159,7 +155,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
             scheduler.resumeAll();
             return true;
         } catch (SchedulerException e) {
-            throw new ApplicationException("-03010302",e.getMessage());
+            throw new BusinessException("-03010302",e.getMessage());
         }
     }
 
@@ -169,7 +165,7 @@ public class TaskServiceImpl extends BaseServiceImpl<Task> implements ITaskServi
             scheduler.pauseAll();
             return true;
         } catch (SchedulerException e) {
-            throw new ApplicationException("-03010302",e.getMessage());
+            throw new BusinessException("-03010302",e.getMessage());
         }
     }
 }

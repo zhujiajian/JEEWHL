@@ -1,7 +1,6 @@
 package com.whli.jee.system.service.impl;
 
-import com.whli.jee.core.exception.ApplicationException;
-import com.whli.jee.core.util.ArrayUtils;
+import com.whli.jee.core.exception.BusinessException;
 import com.whli.jee.core.util.CollectionUtils;
 import com.whli.jee.core.util.StringUtils;
 import com.whli.jee.core.web.dao.IBaseDao;
@@ -34,7 +33,7 @@ public class SysRoleMenuServiceImpl extends BaseServiceImpl<SysRoleMenu> impleme
     @Override
     public int grantByRole(String roleId, List<String> menuIds) {
         if (StringUtils.isNullOrBlank(roleId)) {
-            throw new ApplicationException("-02060601", "请选择需要授权的角色！");
+            throw new BusinessException("-02060601", "请选择需要授权的角色！");
         }
 
         List<SysRoleMenu> sysRoleMenus = new ArrayList<SysRoleMenu>();

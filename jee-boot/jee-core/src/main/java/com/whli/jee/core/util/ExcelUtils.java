@@ -1,13 +1,8 @@
 package com.whli.jee.core.util;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.whli.jee.core.exception.ApplicationException;
-import com.whli.jee.core.web.entity.BaseEntity;
+import com.whli.jee.core.exception.BusinessException;
 import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.ss.formula.functions.T;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -37,7 +30,7 @@ public class ExcelUtils {
     public static void exportExcel(HttpServletResponse response,BaseExcel excel) throws Exception{
         List<Map<String,Object>> dataMaps = excel.datas();
         if (CollectionUtils.isNullOrEmpty(dataMaps)){
-            throw new ApplicationException("-01080601","不存在需要导出的数据！");
+            throw new BusinessException("-01080601","不存在需要导出的数据！");
         }
         //创建Excel
         HSSFWorkbook workbook = new HSSFWorkbook();
@@ -113,7 +106,7 @@ public class ExcelUtils {
      */
     public static <T> List<T> importExcel(String filePath, Class<T> c, String[] headers) throws Exception{
         if (StringUtils.isNullOrBlank(filePath)){
-            throw new ApplicationException("-01080602","文件不存在或该文件已被删除！");
+            throw new BusinessException("-01080602","文件不存在或该文件已被删除！");
         }
 
         return importExcel(new File(filePath), c, headers);
@@ -129,13 +122,13 @@ public class ExcelUtils {
     public static <T> List<T> importExcel(File file, Class<T> c, String[] headers) throws Exception{
 
         if (file == null){
-            throw new ApplicationException("-01080602","文件不存在或该文件已被删除！");
+            throw new BusinessException("-01080602","文件不存在或该文件已被删除！");
         }
 
         String fileSuffix = file.getName().substring(file.getName().lastIndexOf("."));
 
         if (!excel2003L.equals(fileSuffix)){
-            throw new ApplicationException("-01080603","导入的文件格式有误！");
+            throw new BusinessException("-01080603","导入的文件格式有误！");
         }
 
        return importExcel(new FileInputStream(file),c,headers);
@@ -151,13 +144,13 @@ public class ExcelUtils {
     public static <T> List<T> importExcel(InputStream stream, Class<T> c, String[] headers) throws Exception{
 
         if (stream == null){
-            throw new ApplicationException("-01080604","未找到需要导入的文件！");
+            throw new BusinessException("-01080604","未找到需要导入的文件！");
         }
 
         Workbook workbook = new HSSFWorkbook(stream);
 
         if (workbook == null || headers == null || headers.length == 0){
-            throw new ApplicationException("-01080604","未找到需要导入的文件！");
+            throw new BusinessException("-01080604","未找到需要导入的文件！");
         }
         //获取类字段
         Field[] fields = c.getDeclaredFields();

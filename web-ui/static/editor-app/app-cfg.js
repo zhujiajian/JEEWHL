@@ -22,5 +22,5 @@ var ACTIVITI = ACTIVITI || {};
 var root = window.location.pathname.split("/");
 root = root[1]
 ACTIVITI.CONFIG = {
-	'contextRoot' : '/'+root,
+	'contextRoot' : modelUrl,
 };

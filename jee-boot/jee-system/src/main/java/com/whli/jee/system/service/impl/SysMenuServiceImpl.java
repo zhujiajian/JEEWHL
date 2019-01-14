@@ -1,7 +1,5 @@
 package com.whli.jee.system.service.impl;
 
-import com.whli.jee.core.exception.ApplicationException;
-import com.whli.jee.core.util.BeanUtils;
 import com.whli.jee.core.util.CollectionUtils;
 import com.whli.jee.core.util.StringUtils;
 import com.whli.jee.core.web.dao.IBaseDao;
@@ -15,7 +13,6 @@ import com.whli.jee.system.service.ISysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

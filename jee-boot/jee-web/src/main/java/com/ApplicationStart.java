@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.whli.jee.system.config"})
+@ComponentScan(basePackages = {"com.whli.jee.core.init"})
 @ImportResource("classpath:spring/spring-config.xml")
 @MapperScan("com.**.dao")
 @EnableTransactionManagement

@@ -1,6 +1,6 @@
-package com.whli.jee.system.handler.exception;
+package com.whli.jee.core.exception.handler;
 
-import com.whli.jee.core.exception.ApplicationException;
+import com.whli.jee.core.exception.BusinessException;
 import com.whli.jee.core.web.entity.ResponseBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by whli on 2018/1/18.
  */
 @ControllerAdvice
-public class ApplicationExceptionHandler {
+public class BusinessExceptionHandler {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler(value = Exception.class)
@@ -33,8 +33,8 @@ public class ApplicationExceptionHandler {
                 responseBean.setMessage("数据库异常！！");
             }
 
-        }else if (e instanceof ApplicationException) {  //自定义异常
-            ApplicationException applicationException = (ApplicationException)e;
+        }else if (e instanceof BusinessException) {  //自定义异常
+            BusinessException applicationException = (BusinessException)e;
             //返回前台
             responseBean.setCode(applicationException.getErrorCode());
             responseBean.setMessage(applicationException.getMessage());
@@ -45,7 +45,7 @@ public class ApplicationExceptionHandler {
             responseBean.setMessage("应用错误，请联系管理员！"+e.getMessage());
         }
 
-        logger.error("com.whli.jee.system.handler.exception.ApplicationExceptionHandler.defaultErrorHandler bug:{}",e);
+        logger.error("com.whli.jee.core.exception.handler.BusinessExceptionHandler.defaultErrorHandler bug:{}",e);
         return responseBean;
     }
 }

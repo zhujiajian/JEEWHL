@@ -1,7 +1,7 @@
 package com.whli.jee.job.dao;
 
 import com.whli.jee.core.web.dao.IBaseDao;
-import com.whli.jee.job.entity.Task;
+import com.whli.jee.job.entity.Scheduler;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @version 2018/12/24 13:54
  */
 @Repository
-public interface ITaskDao  extends IBaseDao<Task> {
+public interface ISchedulerDao extends IBaseDao<Scheduler> {
 }

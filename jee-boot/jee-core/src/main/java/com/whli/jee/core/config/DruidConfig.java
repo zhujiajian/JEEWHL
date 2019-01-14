@@ -6,6 +6,8 @@ import com.alibaba.druid.support.http.WebStatFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -103,9 +105,9 @@ public class DruidConfig {
         return filterRegistrationBean;
     }
 
-    @Bean
+    @Bean(name = "dataSource")
     @Primary
-    public DataSource druidDataSource() throws SQLException{
+    public DataSource druidDataSource() throws SQLException {
         if (this.dbUrl == null) {
             throw new SQLException("DBPool could not be created: DB URL cannot be null");
         }

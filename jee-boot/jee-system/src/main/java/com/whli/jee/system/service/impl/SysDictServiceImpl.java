@@ -1,6 +1,6 @@
 package com.whli.jee.system.service.impl;
 
-import com.whli.jee.core.exception.ApplicationException;
+import com.whli.jee.core.exception.BusinessException;
 import com.whli.jee.core.util.StringUtils;
 import com.whli.jee.core.web.dao.IBaseDao;
 import com.whli.jee.core.web.service.impl.BaseServiceImpl;
@@ -31,7 +31,7 @@ public class SysDictServiceImpl extends BaseServiceImpl<SysDict> implements ISys
 
 	public List<SysDict> findByParentValue(String value) {
 		if(StringUtils.isNullOrBlank(value)){
-			throw  new ApplicationException("-02060201","父字典值不能为空！");
+			throw  new BusinessException("-02060201","父字典值不能为空！");
 		}
 		return sysDictDao.findByParentValue(value);
 	}

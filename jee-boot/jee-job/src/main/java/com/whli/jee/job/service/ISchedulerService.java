@@ -1,7 +1,7 @@
 package com.whli.jee.job.service;
 
 import com.whli.jee.core.web.service.IBaseService;
-import com.whli.jee.job.entity.Task;
+import com.whli.jee.job.entity.Scheduler;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author whli
  * @version 2018/12/24 11:15
  */
-public interface ITaskService extends IBaseService<Task> {
+public interface ISchedulerService extends IBaseService<Scheduler> {
 
     /**
      * 开始任务
@@ -18,7 +18,7 @@ public interface ITaskService extends IBaseService<Task> {
      * @return
      */
     @Transactional
-    public Boolean startTask(Task entity);
+    public Boolean startTask(Scheduler entity);
 
     /**
      * 暂停任务
@@ -26,7 +26,7 @@ public interface ITaskService extends IBaseService<Task> {
      * @return
      */
     @Transactional
-    public Boolean stopTask(Task entity);
+    public Boolean stopTask(Scheduler entity);
 
     /**
      * 开始所有任务

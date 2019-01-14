@@ -92,7 +92,7 @@ $(function () {
 					}
 					var item = selections[0];
 					JEE.confirmMsg("是否确认删除数据？", function(){
-						$.when(JEE.myAjax("/scheduler/task/delete",
+						$.when(JEE.myAjax("/scheduler/job/delete",
 							{jobName: item.jobName,jobGroup:item.jobGroup})).done(function(result){
 							$("#myModal").hide();
 							$("#tb_data").bootstrapTable("refresh");
@@ -109,7 +109,7 @@ $(function () {
 					var selections = $("#tb_data").bootstrapTable("getSelections");
 					if (selections == null || selections.length == 0) {
 						JEE.confirmMsg("是否确认恢复所有定时任务？", function(){
-							$.when(JEE.myAjax("/scheduler/task/startAll")).done(function(result){
+							$.when(JEE.myAjax("/scheduler/job/startAll")).done(function(result){
 								$("#myModal").hide();
 								$("#tb_data").bootstrapTable("refresh");
 							});
@@ -123,7 +123,7 @@ $(function () {
 
 					var item = selections[0];
 					JEE.confirmMsg("是否确认恢复定时任务？", function(){
-						$.when(JEE.myAjax("/scheduler/task/start",
+						$.when(JEE.myAjax("/scheduler/job/start",
 							{jobName: item.jobName,jobGroup:item.jobGroup})).done(function(result){
 							$("#myModal").hide();
 							$("#tb_data").bootstrapTable("refresh");
@@ -140,7 +140,7 @@ $(function () {
 					var selections = $("#tb_data").bootstrapTable("getSelections");
 					if (selections == null || selections.length == 0) {
 						JEE.confirmMsg("是否确认暂停所有定时任务？", function(){
-							$.when(JEE.myAjax("/scheduler/task/stopAll")).done(function(result){
+							$.when(JEE.myAjax("/scheduler/job/stopAll")).done(function(result){
 								$("#myModal").hide();
 								$("#tb_data").bootstrapTable("refresh");
 							});
@@ -153,7 +153,7 @@ $(function () {
 					}
 					var item = selections[0];
 					JEE.confirmMsg("是否确认暂停定时任务？", function(){
-						$.when(JEE.myAjax("/scheduler/task/stop",
+						$.when(JEE.myAjax("/scheduler/job/stop",
 							{jobName: item.jobName,jobGroup:item.jobGroup})).done(function(result){
 							$("#myModal").hide();
 							$("#tb_data").bootstrapTable("refresh");
@@ -164,7 +164,7 @@ $(function () {
 		],
 		tableId: "tb_data",
 		mainSearch: searchValues,
-		url: "/scheduler/task/findByPage",
+		url: "/scheduler/job/findByPage",
 		searchParams: function () {
 			var temp = {};
 			return temp;
@@ -258,7 +258,7 @@ function showDialog(change, formData) {
 				if (change == 'edit') {
 					data.id = $("#" + defaultTable).bootstrapTable('getSelections')[0].id;
 				}
-				var url = change == "edit" ? "/scheduler/task/update" : "/scheduler/task/add";
+				var url = change == "edit" ? "/scheduler/job/update" : "/scheduler/job/add";
 				$.when(JEE.myAjax(url, data)).done(function (result) {
 					if (result) {
 						$("#myModal").modal("hide");

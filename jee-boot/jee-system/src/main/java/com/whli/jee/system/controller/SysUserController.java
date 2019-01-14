@@ -35,42 +35,6 @@ public class SysUserController extends BaseController<SysUser> {
     private ISysUserRoleService sysUserRoleService;
 
     /**
-     * @Desc 用户登录
-     * @Author whli
-     * @Version 1.0
-     * @Date 2018/6/3 10:19
-     * @Params [username, password]
-     * @Return com.whli.jee.core.web.entity.ResponseBean
-     */
-    @AuthorPermit
-    @PostMapping(value = "/login")
-    @ApiOperation("用户登录")
-    public ResponseBean login(String username,String password) throws Exception{
-        ResponseBean responseBean = new ResponseBean();
-        SysUser loginUser = sysUserService.login(username,password);
-        responseBean.setResults(loginUser);
-        return responseBean;
-    }
-
-    /**
-     * @Desc 用户退出登录
-     * @Author whli
-     * @Version 1.0
-     * @Date 2018/6/3 10:19
-     * @Params
-     * @Return
-     */
-    @AuthorPermit
-    @PostMapping(value = "/logout")
-    @ApiOperation("用户退出")
-    public ResponseBean logout(HttpServletRequest request) throws Exception{
-        ResponseBean responseBean = new ResponseBean();
-        boolean flag = sysUserService.logout(request);
-        responseBean.setResults(flag);
-        return responseBean;
-    }
-
-    /**
      * 分页查询
      *
      * @param entity

@@ -3,7 +3,7 @@ package com.whli.jee.core.exception;
 /**
  * Created by whli on 2018/1/12.
  */
-public class ApplicationException extends RuntimeException{
+public class BusinessException extends RuntimeException{
     /**
      * 错误编码
      */
@@ -15,7 +15,7 @@ public class ApplicationException extends RuntimeException{
      * @param message
      *            信息描述
      */
-    public ApplicationException(String message)
+    public BusinessException(String message)
     {
         super(message);
     }
@@ -28,7 +28,7 @@ public class ApplicationException extends RuntimeException{
      * @param cause
      *            根异常类（可以存入任何异常）
      */
-    public ApplicationException(String message, Throwable cause)
+    public BusinessException(String message, Throwable cause)
     {
         super(message, cause);
     }
@@ -41,7 +41,7 @@ public class ApplicationException extends RuntimeException{
      * @param message
      *            信息描述
      */
-    public ApplicationException(String errorCode, String message)
+    public BusinessException(String errorCode, String message)
     {
         this(errorCode, message,null);
     }
@@ -54,7 +54,7 @@ public class ApplicationException extends RuntimeException{
      * @param message
      *            信息描述
      */
-    public ApplicationException(String errorCode, String message, Throwable cause)
+    public BusinessException(String errorCode, String message, Throwable cause)
     {
         this(message,cause);
         this.setErrorCode(errorCode);

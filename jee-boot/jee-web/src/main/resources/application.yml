@@ -41,6 +41,8 @@ spring:
     publisher-returns: true
     template:
       mandatory: true
+  freemarker:
+    check-template-location: false
 mybatis:
   mapper-locations: classpath*:mappers/*Mapper.xml
   type-aliases-package: com.**.entity
