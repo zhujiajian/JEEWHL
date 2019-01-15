@@ -24,18 +24,18 @@ public interface ISysUserDao extends IBaseDao<SysUser> {
     public SysUser findSysUserByLoginName(@Param("loginName") String loginName);
 
     /**
-     * 由登录用户名查询用户
-     * @param loginName
-     * @return
-     */
-    public SysUser findSysUserByLoginNameAndPassword(@Param("loginName") String loginName, @Param("password") String password);
-
-    /**
      * 由邮箱查询用户
      * @param email
      * @return
      */
     public SysUser findSysUserByEmail(@Param("email") String email);
+
+    /**
+     * 由邮箱查询用户
+     * @param phone
+     * @return
+     */
+    public SysUser findSysUserByPhone(@Param("phone") String phone);
 
     /**
      * 重置密码

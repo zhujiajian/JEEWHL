@@ -54,7 +54,11 @@
 									addTabs(a.data("item"));
 								});
 							} else if(item.target == "HTML") {
-								a.attr('href', item.url);
+								var url = item.href;
+								if (url.indexOf("http") == -1 &&  url.indexOf("https") == -1) {
+									url = apiUrl + url;
+								}
+								a.attr('href', url);
 								a.attr('target', '_blank');
 							}else{
 								a.attr('href', "#");

@@ -112,7 +112,7 @@ $(function () {
 			{
 				btnId: "btn_exportTemplate",
 				btnCss: "btn btn-inverse",
-				btnText: "导出模板",
+				btnText: "导入模板",
 				btnClick: function () {
 					location.href = apiUrl+"/system/sysUser/exportTemplate";
 				}
@@ -319,8 +319,7 @@ function showDialog(change) {
 				{
 					id: "textName",
 					field: "name",
-					title: "姓名",
-					valid: "required"
+					title: "姓名"
 				},
 				{
 					id: "textEmail",
@@ -336,7 +335,7 @@ function showDialog(change) {
 					id: "comboOffice",
 					field: "officeId",
 					title: "部门",
-					comboUrl: "/sysOffice/findAll",
+					comboUrl: "/system/sysOffice/findAll",
 					comboId: "id",
 					comboText: "name"
 				},

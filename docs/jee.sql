@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50559
 File Encoding         : 65001
 
-Date: 2019-01-05 15:41:41
+Date: 2019-01-15 16:06:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -134,6 +134,8 @@ CREATE TABLE `qrtz_locks` (
 -- ----------------------------
 -- Records of qrtz_locks
 -- ----------------------------
+INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'STATE_ACCESS');
+INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'TRIGGER_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -164,6 +166,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
+INSERT INTO `qrtz_scheduler_state` VALUES ('schedulerFactory', 'whli-PC1547538892547', '1547539555332', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -325,6 +328,7 @@ INSERT INTO `tr_sys_role_menu` VALUES ('1', '9F6451C6EFAF11E7A72A507B9DC552FD');
 INSERT INTO `tr_sys_role_menu` VALUES ('1', '8542004A6DE744E2BCD9758B05AE4BC7');
 INSERT INTO `tr_sys_role_menu` VALUES ('1', '832C1B309E114648AD0C37A2AB813F09');
 INSERT INTO `tr_sys_role_menu` VALUES ('1', 'D2F1639EC6BF4E9AA6C217358CC7A952');
+INSERT INTO `tr_sys_role_menu` VALUES ('1', 'B7D7CA7FD0F2432F853A6941622A26F5');
 
 -- ----------------------------
 -- Table structure for tr_sys_user_role
@@ -443,14 +447,15 @@ INSERT INTO `ts_sys_menu` VALUES ('3CC81ADE1F5D4EEC862AB39911013B8A', '2', '删�
 INSERT INTO `ts_sys_menu` VALUES ('6B1C3270EF7D11E79CCA507B9DC552FD', '1', '区域管理', '1', '6', '../system/SysArea/SysAreaList.html', 'TAB', 'fa-map-marker', '', 'whli', '2018-01-02 13:26:01', 'whli', '2018-08-16 15:26:18', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('832C1B309E114648AD0C37A2AB813F09', '8542004A6DE744E2BCD9758B05AE4BC7', '系统日志', null, '1', '../system/SysLog/SysLogList.html', 'TAB', '', null, 'whli', '2018-12-28 13:42:36', null, null, '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('8542004A6DE744E2BCD9758B05AE4BC7', '0', '在线监控', null, '10', '', null, 'fa-hdd-o', null, 'whli', '2018-12-28 13:41:24', 'whli', '2018-12-28 13:41:34', '', '1');
-INSERT INTO `ts_sys_menu` VALUES ('9F6451C6EFAF11E7A72A507B9DC552FD', 'A4FA9839EF9C11E79CCA507B9DC552FD', '创建流程', '1', '9', 'workFlow/toList', 'TAB', 'fa-level-down', '', 'whli', '2018-01-02 19:25:23', 'whli', '2018-01-11 21:32:44', '', '1');
+INSERT INTO `ts_sys_menu` VALUES ('9F6451C6EFAF11E7A72A507B9DC552FD', 'A4FA9839EF9C11E79CCA507B9DC552FD', '创建流程', '1', '1', '../oa/Model/modelList.html', 'TAB', 'fa-level-down', '', 'whli', '2019-01-11 10:25:21', 'admin', '2019-01-11 10:25:21', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('A4FA9839EF9C11E79CCA507B9DC552FD', '0', 'OA管理', '1', '7', '', '', 'fa-anchor', '', 'whli', '2018-01-02 17:09:33', 'whli', '2018-01-22 14:33:31', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('AF95DBF4EAE511E7A6D0507B9DC552FD', '1', '角色管理', '1', '3', '../system/SysRole/SysRoleList.html', 'TAB', 'fa-child', '', 'whli', '2017-12-27 17:09:48', 'whli', '2018-08-16 15:25:43', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('b5a1b55bfa3a4a86a5db06a6dc681156', 'A4FA9839EF9C11E79CCA507B9DC552FD', '任务创建', '1', '2', '', '', 'fa-caret-square-o-right', '', 'whli', '2018-01-19 11:38:57', 'whli', '2018-01-22 16:27:03', '', '1');
-INSERT INTO `ts_sys_menu` VALUES ('BBC5667467A74EDCAB1FAE40053841A8', '1', '定时任务', null, '7', '../task/SysJob/SysJobList.html', 'TAB', '', null, 'whli', '2018-12-28 13:49:01', null, null, '', '1');
+INSERT INTO `ts_sys_menu` VALUES ('B7D7CA7FD0F2432F853A6941622A26F5', '8542004A6DE744E2BCD9758B05AE4BC7', 'Druid监控', null, '3', '/druid', 'HTML', '', null, 'admin', '2019-01-14 16:59:32', null, null, '', '1');
+INSERT INTO `ts_sys_menu` VALUES ('BBC5667467A74EDCAB1FAE40053841A8', '1', '定时任务', null, '7', '../job/SysJob/SysJobList.html', 'TAB', '', null, 'whli', '2019-01-15 16:04:36', 'admin', '2019-01-15 16:04:36', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('C00E62F9EF7C11E79CCA507B9DC552FD', '1', '字典管理', '1', '4', '../system/SysDict/SysDictList.html', 'TAB', 'fa-book', '', 'whli', '2018-01-02 13:21:14', 'whli', '2018-08-16 15:21:32', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('CA42B39FD2864EEA9553FABF839E7A6D', '2', '新增', null, '1', 'btn_add', 'BUTTON', '', null, 'whli', '2018-08-17 11:17:06', '', '2018-08-17 11:17:06', '', '1');
-INSERT INTO `ts_sys_menu` VALUES ('D2F1639EC6BF4E9AA6C217358CC7A952', '8542004A6DE744E2BCD9758B05AE4BC7', '定时任务日志', null, '2', '../task/JobLog/JobLogList.html', 'TAB', '', null, 'whli', '2019-01-01 16:04:26', null, null, '', '1');
+INSERT INTO `ts_sys_menu` VALUES ('D2F1639EC6BF4E9AA6C217358CC7A952', '8542004A6DE744E2BCD9758B05AE4BC7', '定时任务日志', null, '2', '../job/JobLog/JobLogList.html', 'TAB', '', null, 'whli', '2019-01-15 16:04:25', 'admin', '2019-01-15 16:04:25', '', '1');
 
 -- ----------------------------
 -- Table structure for ts_sys_office
@@ -514,9 +519,9 @@ CREATE TABLE `ts_sys_user` (
   `login_name` varchar(100) NOT NULL COMMENT '登录名',
   `password` varchar(100) NOT NULL COMMENT '密码',
   `no` varchar(100) DEFAULT NULL COMMENT '工号',
-  `name` varchar(100) NOT NULL COMMENT '姓名',
-  `email` varchar(200) DEFAULT NULL COMMENT '邮箱',
-  `phone` varchar(200) DEFAULT NULL COMMENT '电话',
+  `name` varchar(100) DEFAULT NULL COMMENT '姓名',
+  `email` varchar(200) NOT NULL COMMENT '邮箱',
+  `phone` varchar(200) NOT NULL COMMENT '电话',
   `photo` varchar(1000) DEFAULT NULL COMMENT '用户头像',
   `login_ip` varchar(100) DEFAULT NULL COMMENT '最后登陆IP',
   `login_date` timestamp NULL DEFAULT NULL COMMENT '最后登陆时间',

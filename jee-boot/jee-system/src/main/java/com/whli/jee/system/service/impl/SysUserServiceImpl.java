@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -51,6 +52,10 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     //@Transactional
     @Override
     public int add(SysUser entity) {
+        if (StringUtils.isNullOrBlank(entity.getLoginName()) || StringUtils.isNullOrBlank(entity.getEmail())
+                || StringUtils.isNullOrBlank(entity.getPhone())){
+            throw new BusinessException("-02060903","用户名、邮箱、联系方式不能为空！");
+        }
 
         SysUser temp = findSysUserByLoginName(entity.getLoginName());
         if (BeanUtils.isNotNull(temp)) {
@@ -60,6 +65,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
         temp = findSysUserByEmail(entity.getEmail());
         if (BeanUtils.isNotNull(temp)) {
             throw new BusinessException("-02060902", "【"+entity.getEmail()+"】邮箱已被其他用户绑定！");
+        }
+
+        temp = findSysUserByPhone(entity.getPhone());
+        if (BeanUtils.isNotNull(temp)) {
+            throw new BusinessException("-02060902", "【"+entity.getPhone()+"】联系方式已被其他用户绑定！");
         }
 
         entity.setEnable(1);
@@ -86,16 +96,16 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
      */
     @Override
     public SysUser login(String loginName, String password) {
-        if (StringUtils.isNullOrBlank(loginName)){
-            throw new BusinessException("-02060903","登录名不能为空！");
+        if (StringUtils.isNullOrBlank(loginName) || StringUtils.isNullOrBlank(password)){
+            throw new BusinessException("-02060903","用户名或密码不能为空！");
         }
 
-        if (StringUtils.isNullOrBlank(password)){
-            throw new BusinessException("-02060904","用户密码不能为空！");
-        }
-
-        SysUser sysUser = findSysUserByLoginNameAndPasswrod(loginName,PwdUtils.md5Encode(password,loginName));
+        SysUser sysUser = findSysUserByLoginName(loginName);
         if (BeanUtils.isNull(sysUser)){
+            throw new BusinessException("-02060905","用户名或密码错误！");
+        }
+
+        if (!sysUser.getPassword().equals(PwdUtils.md5Encode(password,loginName))){
             throw new BusinessException("-02060905","用户名或密码错误！");
         }
 
@@ -142,18 +152,19 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     }
 
     @Override
-    public SysUser findSysUserByLoginNameAndPasswrod(String loginName, String password) {
-        if (StringUtils.isNotNullOrBlank(loginName) && StringUtils.isNotNullOrBlank(password)) {
-            return sysUserDao.findSysUserByLoginNameAndPassword(loginName, password);
-        }
-        return null;
-    }
-
-    @Override
     public SysUser findSysUserByEmail(String email) {
         SysUser currentUser = null;
         if (StringUtils.isNotNullOrBlank(email)) {
             currentUser = sysUserDao.findSysUserByEmail(email);
+        }
+        return currentUser;
+    }
+
+    @Override
+    public SysUser findSysUserByPhone(String phone) {
+        SysUser currentUser = null;
+        if (StringUtils.isNotNullOrBlank(phone)) {
+            currentUser = sysUserDao.findSysUserByPhone(phone);
         }
         return currentUser;
     }
@@ -183,6 +194,11 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
             }
         }
         return rows;
+    }
+
+    @Override
+    public int importExcel(File file) {
+        return super.importExcel(file);
     }
 
     @Override
@@ -243,7 +259,8 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
                 public List<Map<String, Object>> datas() {
                     SysUser user = new SysUser();
                     user.setLoginName("whli");
-                    user.setNo("00001");
+                    user.setEmail("914164909@qq.com");
+                    user.setPhone("13000000000");
                     List<SysUser> lines = new ArrayList<SysUser>();
                     lines.add(user);
                     try {

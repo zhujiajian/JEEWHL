@@ -1,4 +1,4 @@
-package com.whli.jee.core.config;
+package com.whli.jee.job.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.quartz.SchedulerException;

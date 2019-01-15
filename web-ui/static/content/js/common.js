@@ -51,11 +51,9 @@ common.prototype.initTable = function (options) {
 		})
 
 	}
-	var url = apiUrl;
-	if (options.url && (options.url.indexOf("http") >=0 || options.url.indexOf("https") >=0)){
-		url = options.url;
-	}else {
-		url += options.url;
+	var url = options.url;
+	if (url.indexOf("http") == -1 &&  url.indexOf("https") == -1) {
+		url = apiUrl + url;
 	}
 
 	//将表格初始化BootStrapTable
@@ -529,16 +527,16 @@ common.prototype.initIcon = function (selector) {
  */
 common.prototype.myAjax = function (url, data, contentType, method, async) {
 	var def = $.Deferred();
-	var myUrl = url;
-	if (url.indexOf("http") == -1) {
-		myUrl = apiUrl + url;
+	
+	if (url.indexOf("http") == -1 &&  url.indexOf("https") == -1) {
+		url = apiUrl + url;
 	}
 	var myType = method ? method : "post";
 	var myData = data ? JSON.stringify(data) : JSON.stringify({});
 	var myContentType = contentType ? contentType : "json";
 	var myAsync = async === false ? false : true;
 	$.ajax({
-		url: myUrl,
+		url: url,
 		type: myType,
 		data: myData,
 		contentType: "application/" + myContentType + ";charset=UTF-8",

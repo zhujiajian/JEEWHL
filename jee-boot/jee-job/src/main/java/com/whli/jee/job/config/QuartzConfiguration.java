@@ -89,7 +89,7 @@ public class QuartzConfiguration {
         properties.setProperty("org.quartz.dataSource.qzDS.user",username);
         properties.setProperty("org.quartz.dataSource.qzDS.password",password);
         properties.setProperty("org.quartz.dataSource.qzDS.connectionProvider.class",
-                "com.whli.jee.core.config.DruidConnectionProvider");
+                "com.whli.jee.job.config.DruidConnectionProvider");
         //定义参数
         PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
         propertiesFactoryBean.setProperties(properties);

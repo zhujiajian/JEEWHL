@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
 	<!--
 	说明：
@@ -33,7 +32,7 @@
 	<!-- 按照每天生成日志文件 info信息-->
 	<appender name="DATELOG_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 正在记录的日志文件的路径及文件名 -->
-		<file>${LOG_HOME}/${APP_DIR}/mes_base_web.info.log</file>
+		<file>${LOG_HOME}/${APP_DIR}/base_web.info.log</file>
 		<!-- <Prudent>true</Prudent> -->
 		<!-- 此日志文件只记录info级别的 -->
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -44,7 +43,7 @@
 		<!-- 日志记录器的滚动策略，按日期记录 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- 归档的日志文件的路径 -->
-			<FileNamePattern>${LOG_HOME}/${APP_DIR}/info/mes_base_web.%d{yyyy-MM-dd}.%i.info.log</FileNamePattern>
+			<FileNamePattern>${LOG_HOME}/${APP_DIR}/info/base_web.%d{yyyy-MM-dd}.%i.info.log</FileNamePattern>
 			<MaxHistory>90</MaxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy  
                 class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
@@ -62,7 +61,7 @@
 	<!-- 按照每天生成日志文件 error信息 -->
 	<appender name="DATELOG_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 正在记录的日志文件的路径及文件名 -->
-		<file>${LOG_HOME}/${APP_DIR}/mes_base_web.error.log</file>
+		<file>${LOG_HOME}/${APP_DIR}/base_web.error.log</file>
 		<!-- <Prudent>true</Prudent> -->
 		<!-- 此日志文件只记录error级别的 -->
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -72,7 +71,7 @@
 		</filter>
 		<!-- 日志记录器的滚动策略，按日期记录 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${LOG_HOME}/${APP_DIR}/error/mes_base_web.%d{yyyy-MM-dd}.%i.error.log
+			<FileNamePattern>${LOG_HOME}/${APP_DIR}/error/base_web.%d{yyyy-MM-dd}.%i.error.log
 			</FileNamePattern>
 			<MaxHistory>90</MaxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy  
@@ -89,7 +88,7 @@
 	<!-- 按照每天生成日志文件 debug信息 -->
 	<appender name="DATELOG_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 正在记录的日志文件的路径及文件名 -->
-		<file>${LOG_HOME}/${APP_DIR}/mes_base_web.debug.log</file>
+		<file>${LOG_HOME}/${APP_DIR}/base_web.debug.log</file>
 		<!-- <Prudent>true</Prudent> -->
 		<!-- 此日志文件只记录debug级别的 -->
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -99,7 +98,7 @@
 		</filter>
 		<!-- 日志记录器的滚动策略，按日期记录 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${LOG_HOME}/${APP_DIR}/debug/mes_base_web.%d{yyyy-MM-dd}.%i.debug.log
+			<FileNamePattern>${LOG_HOME}/${APP_DIR}/debug/base_web.%d{yyyy-MM-dd}.%i.debug.log
 			</FileNamePattern>
 			<MaxHistory>90</MaxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy  
@@ -116,7 +115,7 @@
 	<!-- 按照每天生成日志文件 warn信息 -->
 	<appender name="DATELOG_WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- 正在记录的日志文件的路径及文件名 -->
-		<file>${LOG_HOME}/${APP_DIR}/mes_base_web.warn.log</file>
+		<file>${LOG_HOME}/${APP_DIR}/base_web.warn.log</file>
 		<!-- <Prudent>true</Prudent> -->
 		<!-- 此日志文件只记录warn级别的 -->
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -126,7 +125,7 @@
 		</filter>
 		<!-- 日志记录器的滚动策略，按日期记录 -->
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${LOG_HOME}/${APP_DIR}/warn/mes_base_web.%d{yyyy-MM-dd}.%i.warn.log
+			<FileNamePattern>${LOG_HOME}/${APP_DIR}/warn/base_web.%d{yyyy-MM-dd}.%i.warn.log
 			</FileNamePattern>
 			<MaxHistory>90</MaxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy  

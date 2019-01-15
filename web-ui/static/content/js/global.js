@@ -11,7 +11,7 @@ $(function () {
     if(pathName.indexOf("login.html") == -1){
         var token = sessionStorage.getItem('token');
         if(!token){
-            window.location.href= "../../ui/Login.html";
+            window.location.href= "../../ui/login.html";
         }
     }
 });
