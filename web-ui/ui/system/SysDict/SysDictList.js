@@ -59,20 +59,31 @@ $(function () {
 					}
 					showDialog("edit");
 				},
-				otherOptions: [{
-					id: "tb_data",
-					selectNum: 1
-				}]
+				otherOptions: [
+					{
+						id: "tb_data",
+						selectNum: 1
+					},
+					{
+						id: "tb_data",
+						isEdit: true
+					},
+				]
 
 			},
 			{
 				btnId: "btn_delete",
 				btnCss: "btn btn-danger",
 				btnText: "删除",
-				otherOptions: [{
-					id: "tb_data",
-					selectMinNum: 1
-				}],
+				otherOptions: [
+					{
+						id: "tb_data",
+						selectMinNum: 1
+					},
+					{
+						id: "tb_data",
+						isEdit: true
+					},],
 				btnClick: function () {
 					var selections = $("#tb_data").bootstrapTable("getSelections");
 					if (selections == null || selections.length == 0) {
@@ -123,6 +134,17 @@ $(function () {
 			{
 				field: "enable",
 				title: "启用",
+				formatter: function (val, row, index) {
+					if (val == 1) {
+						return '<span class="label label-success arrowed">是</span>';
+					} else if (val == 0) {
+						return '<span class="label label-danger arrowed-in">否</span>';
+					}
+				}
+			},
+			{
+				field: "edit",
+				title: "前端可编辑",
 				formatter: function (val, row, index) {
 					if (val == 1) {
 						return '<span class="label label-success arrowed">是</span>';
@@ -229,6 +251,12 @@ function showDialog(change) {
 					id: "switchEnable",
 					field: "enable",
 					title: "启用",
+					disable: change && change == "edit" ? false : false
+				},
+				{
+					id: "switchEdit",
+					field: "edit",
+					title: "前端可编辑",
 					disable: change && change == "edit" ? false : false
 				}
 			]

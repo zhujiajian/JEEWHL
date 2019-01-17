@@ -14,9 +14,6 @@ import org.apache.ibatis.plugin.*;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.Configuration;
-import org.apache.ibatis.type.JdbcType;
-import org.apache.ibatis.type.TypeException;
-import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +21,10 @@ import org.springframework.scheduling.annotation.Async;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
-import java.util.*;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by whli on 2018/1/19.
@@ -244,11 +243,13 @@ public class PageInterceptor implements Interceptor {
 
         sqlId = sqlId.toLowerCase();
 
-        if (sqlId.indexOf("add") != -1 || sqlId.indexOf("insert") != -1 || sqlId.indexOf("create") != -1){
+        if (sqlId.indexOf("add") != -1 || sqlId.indexOf("insert") != -1 || sqlId.indexOf("create") != -1
+                || sqlId.indexOf("new ") != -1){
             type = "ADD";
         }else if (sqlId.indexOf("update") != -1 || sqlId.indexOf("modify") != -1){
             type = "UPDATE";
-        }else if (sqlId.indexOf("delete") != -1 || sqlId.indexOf("del") != -1 || sqlId.indexOf("remove") != -1){
+        }else if (sqlId.indexOf("delete") != -1 || sqlId.indexOf("del") != -1
+                || sqlId.indexOf("remove") != -1){
             type = "DELETE";
         }
 

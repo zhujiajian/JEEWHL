@@ -2,8 +2,6 @@ package com.whli.jee.system.entity;
 
 import com.whli.jee.core.web.entity.BaseEntity;
 
-import java.util.List;
-
 /**
  * 数据字典
  * @author whli
@@ -18,6 +16,7 @@ public class SysDict extends BaseEntity implements java.io.Serializable{
 	private String name;  //标签名
 	private String remark;  //备注信息
 	private Integer enable;  //删除标记
+	private Integer edit; //前端可编辑
 
 	public void setParentId(String value){
 		this.parentId=value;
@@ -56,5 +55,13 @@ public class SysDict extends BaseEntity implements java.io.Serializable{
 
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+
+	public Integer getEdit() {
+		return edit;
+	}
+
+	public void setEdit(Integer edit) {
+		this.edit = edit;
 	}
 }

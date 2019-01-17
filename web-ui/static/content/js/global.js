@@ -1,8 +1,3 @@
-var apiUrl = "http://127.0.0.1:8088/jee";
-var jobUrl = "http://127.0.0.1:8088/jee";
-var modelUrl = "http://127.0.0.1:8088/jee";
-var oaUrl = "http://127.0.0.1:8088/jee";
-
 /**
  * Created by whli on 2018/2/5.
  */

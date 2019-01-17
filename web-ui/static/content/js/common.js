@@ -1,3 +1,8 @@
+var apiUrl = "http://127.0.0.1:8088/jee";
+var jobUrl = "http://127.0.0.1:8088/jee";
+var activityUrl = "http://127.0.0.1:8080/activity";
+var oaUrl = "http://127.0.0.1:8088/jee";
+
 var common = function () {
 
 };
@@ -28,6 +33,7 @@ common.prototype.initTable = function (options) {
 	var _treeField = options.treeField ? options.treeField : "name";
 	var _treeId = options.treeId ? options.treeId : "id";
 	var _treeCollapseAll = options.treeCollapseAll ? options.treeCollapseAll : false; //是否全部展开
+	var _showRefresh = options.showRefresh == true ?  true: false;
 
 	//创建按钮工具栏
 	var _btnItems = options.btnItems ? options.btnItems : [];
@@ -70,7 +76,7 @@ common.prototype.initTable = function (options) {
 		pageNumber: 1, //初始化加载第一页，默认第一页
 		pageSize: 10, //每页的记录行数（*）
 		pageList: [10, 25, 50, 100, 500,1000], //可供选择的每页的行数（*）
-		showRefresh: false, //是否显示刷新按钮
+		showRefresh: _showRefresh, //是否显示刷新按钮
 		showToggle: false, //是否显示详细视图和列表视图的切换按钮
 		clickToSelect: true, //是否启用点击选中行
 		singleSelect: _singleclick,
@@ -675,6 +681,15 @@ common.prototype.getButtonStatus = function (btnValues) {
 					otherOption = otherOption && ($('#' + item1.id).bootstrapTable('getSelections').length >= item1.selectMinNum)
 				} else if (item1.textId) {
 					otherOption = otherOption && ($('#' + item1.textId).val() != '')
+				} else if(item1.isEdit){
+					var selects = $('#' + item1.id).bootstrapTable('getSelections');
+					$.each(selects,function(index2,item2){
+						console.log("item2.edit == "+item2.edit);
+						if(item2.edit != true && item2.edit != 1){
+							otherOption = otherOption && false;
+							return;
+						}
+					});
 				} else if (item1.noSelect) {
 					var rows = $('#' + item1.id).bootstrapTable('getSelections')
 					rows.forEach(function (row, rowindex, rowarray) {
