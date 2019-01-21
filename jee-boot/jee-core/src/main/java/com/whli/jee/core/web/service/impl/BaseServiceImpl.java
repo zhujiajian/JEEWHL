@@ -33,7 +33,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public int add(T entity){
         if(BeanUtils.isNull(entity)){
-            throw new BusinessException("-00000001","新增数据不能为空！");
+            throw new BusinessException("新增数据不能为空！");
         }
         entity.setId(BeanUtils.getUUID());
         entity.setCreateBy(StringUtils.isNullOrBlank(WebUtils.getLoginName()) ? "anonymous" : WebUtils.getLoginName());
@@ -49,7 +49,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public int addMore(List<T> entities){
         if(CollectionUtils.isNullOrEmpty(entities)){
-            throw new BusinessException("-00000001","新增数据不能为空！");
+            throw new BusinessException("新增数据不能为空！");
         }
         int rows = 0;
         for(T entity:entities){
@@ -70,7 +70,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public int update(T entity){
         if(BeanUtils.isNull(entity)){
-            throw new BusinessException("-00000002","修改数据不能为空！");
+            throw new BusinessException("修改数据不能为空！");
         }
         entity.setUpdateBy(StringUtils.isNullOrBlank(WebUtils.getLoginName()) ? "anonymous" : WebUtils.getLoginName());
         entity.setUpdateDate(new Date());
@@ -85,7 +85,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public int updateMore(List<T> entities){
         if(CollectionUtils.isNullOrEmpty(entities)){
-            throw new BusinessException("-00000002","修改数据不能为空！");
+            throw new BusinessException("修改数据不能为空！");
         }
         int rows = 0;
         for(T entity:entities){
@@ -104,7 +104,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public void delete(T entity){
         if(StringUtils.isNullOrBlank(entity.getId())){
-            throw new BusinessException("-00000003","请选择需要删除的数据！");
+            throw new BusinessException("请选择需要删除的数据！");
         }
         getDao().delete(entity.getId());
     }
@@ -117,7 +117,7 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public void deleteMore(T entity){
         if(CollectionUtils.isNullOrEmpty(entity.getIds())){
-            throw new BusinessException("-00000003","请选择需要删除的数据！");
+            throw new BusinessException("请选择需要删除的数据！");
         }
         getDao().deleteMore(entity.getIds());
     }
@@ -130,11 +130,11 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public T findByPK(String id){
         if(StringUtils.isNullOrBlank(id)){
-            throw new BusinessException("-00000004","请选择需要查询的数据！");
+            throw new BusinessException("请选择需要查询的数据！");
         }
         T entity = getDao().findByPK(id);
         if(BeanUtils.isNull(entity)){
-            throw  new BusinessException("-00000005","查询的数据不存在或已删除！");
+            throw  new BusinessException("查询的数据不存在或已删除！");
         }
         return entity;
     }
@@ -142,11 +142,11 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public T findByNo(String No) {
         if(StringUtils.isNullOrBlank(No)){
-            throw new BusinessException("-00000004","请选择需要查询的数据！");
+            throw new BusinessException("请选择需要查询的数据！");
         }
         T entity = getDao().findByNo(No);
         if(BeanUtils.isNull(entity)){
-            throw  new BusinessException("-00000005","查询的数据不存在或已删除！");
+            throw  new BusinessException("查询的数据不存在或已删除！");
         }
         return entity;
     }
@@ -154,11 +154,11 @@ public class BaseServiceImpl<T extends BaseEntity> implements IBaseService<T> {
     @Override
     public T findByName(String name) {
         if(StringUtils.isNullOrBlank(name)){
-            throw new BusinessException("-00000004","请选择需要查询的数据！");
+            throw new BusinessException("请选择需要查询的数据！");
         }
         T entity = getDao().findByName(name);
         if(BeanUtils.isNull(entity)){
-            throw  new BusinessException("-00000005","查询的数据不存在或已删除！");
+            throw  new BusinessException("查询的数据不存在或已删除！");
         }
         return entity;
     }

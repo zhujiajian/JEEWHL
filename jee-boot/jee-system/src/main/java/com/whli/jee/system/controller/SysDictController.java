@@ -10,10 +10,7 @@ import com.whli.jee.system.service.ISysDictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -170,7 +167,7 @@ public class SysDictController extends BaseController<SysDict> {
 
     @ApiIgnore
     @Override
-    public ResponseBean importExcel(MultipartFile file) throws Exception {
+    public ResponseBean importExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file) throws Exception {
         return null;
     }
 
@@ -198,12 +195,8 @@ public class SysDictController extends BaseController<SysDict> {
      */
     @PostMapping(value = "/findByParentIdAndSort")
     @ApiOperation("查询同级别下序号是否存在")
-    public String findByParentIdAndSort(SysDict entity){
-        SysDict temp = sysDictService.findByParentIdAndSort(entity);
-        if (BeanUtils.isNotNull(temp)){
-            return "false";
-        }
-        return "true";
+    public SysDict findByParentIdAndSort(@RequestBody SysDict entity){
+        return sysDictService.findByParentIdAndSort(entity);
     }
 }
 

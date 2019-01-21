@@ -40,7 +40,7 @@ public interface ISysUserService extends IBaseService<SysUser> {
      * @param loginName
      * @return
      */
-    public SysUser findSysUserByLoginName(String loginName);
+    public SysUser findByLoginNameOrEmailOrPhone(String loginName);
 
 
     /**
@@ -48,14 +48,14 @@ public interface ISysUserService extends IBaseService<SysUser> {
      * @param email
      * @return
      */
-    public SysUser findSysUserByEmail(String email);
+    public SysUser findByEmail(String email);
 
     /**
      * 由邮箱查询用户
      * @param phone
      * @return
      */
-    public SysUser findSysUserByPhone(String phone);
+    public SysUser findByPhone(String phone);
 
     /**
      * @Desc 授权用户角色权限

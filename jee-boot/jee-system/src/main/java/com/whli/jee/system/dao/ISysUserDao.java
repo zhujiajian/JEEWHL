@@ -5,8 +5,6 @@ import com.whli.jee.system.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
  *
  * @author whli
@@ -21,21 +19,21 @@ public interface ISysUserDao extends IBaseDao<SysUser> {
      * @param loginName
      * @return
      */
-    public SysUser findSysUserByLoginName(@Param("loginName") String loginName);
+    public SysUser findByLoginNameOrEmailOrPhone(@Param("loginName") String loginName);
 
     /**
      * 由邮箱查询用户
      * @param email
      * @return
      */
-    public SysUser findSysUserByEmail(@Param("email") String email);
+    public SysUser findByEmail(@Param("email") String email);
 
     /**
      * 由邮箱查询用户
      * @param phone
      * @return
      */
-    public SysUser findSysUserByPhone(@Param("phone") String phone);
+    public SysUser findByPhone(@Param("phone") String phone);
 
     /**
      * 重置密码

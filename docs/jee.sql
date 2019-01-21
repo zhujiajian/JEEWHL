@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50559
 File Encoding         : 65001
 
-Date: 2019-01-15 16:06:28
+Date: 2019-01-19 20:59:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -134,8 +134,6 @@ CREATE TABLE `qrtz_locks` (
 -- ----------------------------
 -- Records of qrtz_locks
 -- ----------------------------
-INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'STATE_ACCESS');
-INSERT INTO `qrtz_locks` VALUES ('schedulerFactory', 'TRIGGER_ACCESS');
 
 -- ----------------------------
 -- Table structure for qrtz_paused_trigger_grps
@@ -166,7 +164,6 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('schedulerFactory', 'whli-PC1547538892547', '1547539555332', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -385,31 +382,32 @@ CREATE TABLE `ts_sys_dict` (
   `update_date` timestamp NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `enable` int(1) NOT NULL DEFAULT '1' COMMENT '是否启用',
+  `edit` int(1) DEFAULT '1' COMMENT '是否前端可编辑',
   PRIMARY KEY (`ts_sys_dict_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='字典表';
 
 -- ----------------------------
 -- Records of ts_sys_dict
 -- ----------------------------
-INSERT INTO `ts_sys_dict` VALUES ('0158F8C50EEC4A16BCE86CA0B448CC9F', '8D0519F3C1BB460DA1995259CD1F2B51', 'BUTTON', '按钮', '3', 'whli', '2018-08-16 15:24:21', 'whli', '2018-12-28 11:30:14', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('025BBD7CBC7141BB8C10E5034BFFC978', 'A34B385AC67A45AB903154E11FD3ECF6', 'WAITING', '正常', '1', 'whli', '2018-12-28 13:46:53', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('06725ED554894D6FA59F047AD1360AB0', null, 'OPERATION_TYPE', '系统操作类型', '3', 'whli', '2018-12-28 11:31:34', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('09383702FCD2492686C75A47B47CBE20', '8D0519F3C1BB460DA1995259CD1F2B51', 'HTML', '页面', '2', 'whli', '2018-08-16 15:23:49', 'whli', '2018-12-28 11:30:09', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('1768563673054E4A8AACF4280DFD7DFF', 'BEB9203BCD6542B5A79E978A5728C0AA', '1', '是', '2', 'whli', '2018-08-20 11:09:33', 'whli', '2018-12-28 11:29:48', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('1D16F4B8B86A43408703F624258DAF89', '3C5AAE60B8EF439FA374B95093D6008B', 'DEFAULT', '默认任务组', '1', 'whli', '2018-12-28 13:45:47', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('3C5AAE60B8EF439FA374B95093D6008B', null, 'JOB_GROUP', '定时任务组', '4', 'whli', '2018-12-28 13:45:23', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('4761B91E60C74BB98CF796AD125DA102', '06725ED554894D6FA59F047AD1360AB0', 'UPDATE', '修改', '2', 'whli', '2018-12-28 11:32:03', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('4CC61A3FCA4C44C7B199E7CD2F8EC50C', '8D0519F3C1BB460DA1995259CD1F2B51', 'TAB', '标签', '1', 'whli', '2018-08-16 15:23:36', 'whli', '2018-12-28 11:30:05', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('8C0C80CA8566459C93073BB1A30937E0', 'A34B385AC67A45AB903154E11FD3ECF6', 'PAUSED', '暂停', '3', 'whli', '2018-12-28 13:47:45', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('8D0519F3C1BB460DA1995259CD1F2B51', null, 'MENU_TYPE', '菜单类型', '2', 'whli', '2018-08-16 15:22:49', 'whli', '2018-12-28 11:29:26', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('8ED6DC5C898044F88E276005C1F296D7', '06725ED554894D6FA59F047AD1360AB0', 'ADD', '新增', '1', 'whli', '2018-12-28 11:31:47', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('A34B385AC67A45AB903154E11FD3ECF6', null, 'JOB_STATUS', '定时任务状态', '5', 'whli', '2018-12-28 13:46:12', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('A40D9C43EF8111E79CCA507B9DC552FD', '75ACAE9DEF8111E79CCA507B9DC552FD', 'administration', '行政', null, 'whli', '2018-01-02 13:56:14', 'whli', '2018-01-02 13:56:14', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('B60F59ADEF8111E79CCA507B9DC552FD', '75ACAE9DEF8111E79CCA507B9DC552FD', 'production', '生产', null, 'whli', '2018-01-02 13:56:45', 'whli', '2018-01-02 13:56:45', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('B74AF0D8467E4A7BA135DCAA658E2BC8', 'BEB9203BCD6542B5A79E978A5728C0AA', '0', '否', '1', 'whli', '2018-08-20 11:09:20', 'whli', '2018-12-28 11:29:59', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('BEB9203BCD6542B5A79E978A5728C0AA', null, 'YES_NO', '是与否', '1', 'whli', '2018-08-20 11:09:05', 'whli', '2018-12-28 11:29:23', '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('BF6BF12DC20F41F9883C9266CDE95994', 'A34B385AC67A45AB903154E11FD3ECF6', 'ACQUIRED', '运行中', '2', 'whli', '2018-12-28 13:54:11', null, null, '', '1');
-INSERT INTO `ts_sys_dict` VALUES ('F6AEA18451CA422FA71BD2396F9BF182', '06725ED554894D6FA59F047AD1360AB0', 'DELETE', '删除', '3', 'whli', '2018-12-28 11:32:14', null, null, '', '1');
+INSERT INTO `ts_sys_dict` VALUES ('0158F8C50EEC4A16BCE86CA0B448CC9F', '8D0519F3C1BB460DA1995259CD1F2B51', 'BUTTON', '按钮', '3', 'whli', '2019-01-17 16:04:51', 'admin', '2019-01-17 16:04:51', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('025BBD7CBC7141BB8C10E5034BFFC978', 'A34B385AC67A45AB903154E11FD3ECF6', 'WAITING', '正常', '1', 'whli', '2019-01-17 16:05:58', 'admin', '2019-01-17 16:05:58', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('06725ED554894D6FA59F047AD1360AB0', null, 'OPERATION_TYPE', '系统操作类型', '3', 'whli', '2019-01-17 16:05:16', 'admin', '2019-01-17 16:05:16', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('09383702FCD2492686C75A47B47CBE20', '8D0519F3C1BB460DA1995259CD1F2B51', 'HTML', '页面', '2', 'whli', '2019-01-17 16:04:44', 'admin', '2019-01-17 16:04:44', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('1768563673054E4A8AACF4280DFD7DFF', 'BEB9203BCD6542B5A79E978A5728C0AA', '1', '是', '2', 'whli', '2019-01-17 16:04:24', 'admin', '2019-01-17 16:04:24', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('1D16F4B8B86A43408703F624258DAF89', '3C5AAE60B8EF439FA374B95093D6008B', 'DEFAULT', '默认任务组', '1', 'whli', '2018-12-28 13:45:47', null, null, '', '1', '1');
+INSERT INTO `ts_sys_dict` VALUES ('3C5AAE60B8EF439FA374B95093D6008B', null, 'JOB_GROUP', '定时任务组', '4', 'whli', '2019-01-17 16:05:49', 'admin', '2019-01-17 16:05:49', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('4761B91E60C74BB98CF796AD125DA102', '06725ED554894D6FA59F047AD1360AB0', 'UPDATE', '修改', '2', 'whli', '2019-01-17 16:05:27', 'admin', '2019-01-17 16:05:27', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('4CC61A3FCA4C44C7B199E7CD2F8EC50C', '8D0519F3C1BB460DA1995259CD1F2B51', 'TAB', '标签', '1', 'whli', '2019-01-17 16:04:38', 'admin', '2019-01-17 16:04:38', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('8C0C80CA8566459C93073BB1A30937E0', 'A34B385AC67A45AB903154E11FD3ECF6', 'PAUSED', '暂停', '3', 'whli', '2019-01-17 16:06:07', 'admin', '2019-01-17 16:06:07', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('8D0519F3C1BB460DA1995259CD1F2B51', null, 'MENU_TYPE', '菜单类型', '2', 'whli', '2019-01-17 16:04:33', 'admin', '2019-01-17 16:04:33', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('8ED6DC5C898044F88E276005C1F296D7', '06725ED554894D6FA59F047AD1360AB0', 'ADD', '新增', '1', 'whli', '2019-01-17 16:05:22', 'admin', '2019-01-17 16:05:22', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('A34B385AC67A45AB903154E11FD3ECF6', null, 'JOB_STATUS', '定时任务状态', '5', 'whli', '2019-01-17 16:05:53', 'admin', '2019-01-17 16:05:53', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('A40D9C43EF8111E79CCA507B9DC552FD', '75ACAE9DEF8111E79CCA507B9DC552FD', 'administration', '行政', null, 'whli', '2018-01-02 13:56:14', 'whli', '2018-01-02 13:56:14', '', '1', '1');
+INSERT INTO `ts_sys_dict` VALUES ('B60F59ADEF8111E79CCA507B9DC552FD', '75ACAE9DEF8111E79CCA507B9DC552FD', 'production', '生产', null, 'whli', '2018-01-02 13:56:45', 'whli', '2018-01-02 13:56:45', '', '1', '1');
+INSERT INTO `ts_sys_dict` VALUES ('B74AF0D8467E4A7BA135DCAA658E2BC8', 'BEB9203BCD6542B5A79E978A5728C0AA', '0', '否', '1', 'whli', '2019-01-17 16:04:17', 'admin', '2019-01-17 16:04:17', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('BEB9203BCD6542B5A79E978A5728C0AA', null, 'YES_NO', '是与否', '1', 'whli', '2019-01-17 15:52:24', 'admin', '2019-01-17 15:52:24', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('BF6BF12DC20F41F9883C9266CDE95994', 'A34B385AC67A45AB903154E11FD3ECF6', 'ACQUIRED', '运行中', '2', 'whli', '2019-01-17 16:06:02', 'admin', '2019-01-17 16:06:02', '', '1', '0');
+INSERT INTO `ts_sys_dict` VALUES ('F6AEA18451CA422FA71BD2396F9BF182', '06725ED554894D6FA59F047AD1360AB0', 'DELETE', '删除', '3', 'whli', '2019-01-17 16:05:32', 'admin', '2019-01-17 16:05:32', '', '1', '0');
 
 -- ----------------------------
 -- Table structure for ts_sys_menu
@@ -447,7 +445,7 @@ INSERT INTO `ts_sys_menu` VALUES ('3CC81ADE1F5D4EEC862AB39911013B8A', '2', '删�
 INSERT INTO `ts_sys_menu` VALUES ('6B1C3270EF7D11E79CCA507B9DC552FD', '1', '区域管理', '1', '6', '../system/SysArea/SysAreaList.html', 'TAB', 'fa-map-marker', '', 'whli', '2018-01-02 13:26:01', 'whli', '2018-08-16 15:26:18', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('832C1B309E114648AD0C37A2AB813F09', '8542004A6DE744E2BCD9758B05AE4BC7', '系统日志', null, '1', '../system/SysLog/SysLogList.html', 'TAB', '', null, 'whli', '2018-12-28 13:42:36', null, null, '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('8542004A6DE744E2BCD9758B05AE4BC7', '0', '在线监控', null, '10', '', null, 'fa-hdd-o', null, 'whli', '2018-12-28 13:41:24', 'whli', '2018-12-28 13:41:34', '', '1');
-INSERT INTO `ts_sys_menu` VALUES ('9F6451C6EFAF11E7A72A507B9DC552FD', 'A4FA9839EF9C11E79CCA507B9DC552FD', '创建流程', '1', '1', '../oa/Model/modelList.html', 'TAB', 'fa-level-down', '', 'whli', '2019-01-11 10:25:21', 'admin', '2019-01-11 10:25:21', '', '1');
+INSERT INTO `ts_sys_menu` VALUES ('9F6451C6EFAF11E7A72A507B9DC552FD', 'A4FA9839EF9C11E79CCA507B9DC552FD', '流程模型', '1', '1', '../oa/Model/modelList.html', 'TAB', 'fa-level-down', '', 'whli', '2019-01-17 16:35:11', 'admin', '2019-01-17 16:35:11', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('A4FA9839EF9C11E79CCA507B9DC552FD', '0', 'OA管理', '1', '7', '', '', 'fa-anchor', '', 'whli', '2018-01-02 17:09:33', 'whli', '2018-01-22 14:33:31', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('AF95DBF4EAE511E7A6D0507B9DC552FD', '1', '角色管理', '1', '3', '../system/SysRole/SysRoleList.html', 'TAB', 'fa-child', '', 'whli', '2017-12-27 17:09:48', 'whli', '2018-08-16 15:25:43', '', '1');
 INSERT INTO `ts_sys_menu` VALUES ('b5a1b55bfa3a4a86a5db06a6dc681156', 'A4FA9839EF9C11E79CCA507B9DC552FD', '任务创建', '1', '2', '', '', 'fa-caret-square-o-right', '', 'whli', '2018-01-19 11:38:57', 'whli', '2018-01-22 16:27:03', '', '1');

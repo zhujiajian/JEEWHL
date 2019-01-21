@@ -12,10 +12,7 @@ import com.whli.jee.system.service.ISysMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -136,7 +133,7 @@ public class SysMenuController extends BaseController<SysMenu> {
     @PostMapping(value = "/findByNo")
     @ApiIgnore
     @Override
-    public SysMenu findByNo(SysMenu entity, HttpServletRequest req) throws Exception {
+    public SysMenu findByNo(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         return null;
     }
 
@@ -150,7 +147,7 @@ public class SysMenuController extends BaseController<SysMenu> {
     @PostMapping(value = "/findByName")
     @ApiOperation("根据系统菜单名称查询")
     @Override
-    public SysMenu findByName(SysMenu entity, HttpServletRequest req) throws Exception {
+    public SysMenu findByName(@RequestBody SysMenu entity, HttpServletRequest req) throws Exception {
         return sysMenuService.findByName(entity.getName());
     }
 
@@ -175,7 +172,7 @@ public class SysMenuController extends BaseController<SysMenu> {
 
     @ApiIgnore
     @Override
-    public ResponseBean importExcel(MultipartFile file) throws Exception {
+    public ResponseBean importExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file) throws Exception {
         return null;
     }
 
@@ -233,12 +230,8 @@ public class SysMenuController extends BaseController<SysMenu> {
      */
     @PostMapping(value = "/findByParentIdAndSort")
     @ApiOperation("查询同级别下是否存在相同序号")
-    public String findByParentIdAndSort(SysMenu entity){
-        SysMenu temp = sysMenuService.findByParentIdAndSort(entity);
-        if (BeanUtils.isNotNull(temp)){
-            return "false";
-        }
-        return "true";
+    public SysMenu findByParentIdAndSort(@RequestBody SysMenu entity){
+        return sysMenuService.findByParentIdAndSort(entity);
     }
 }
 

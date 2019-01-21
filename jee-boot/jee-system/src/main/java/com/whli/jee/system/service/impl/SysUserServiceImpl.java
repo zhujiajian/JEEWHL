@@ -54,22 +54,22 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     public int add(SysUser entity) {
         if (StringUtils.isNullOrBlank(entity.getLoginName()) || StringUtils.isNullOrBlank(entity.getEmail())
                 || StringUtils.isNullOrBlank(entity.getPhone())){
-            throw new BusinessException("-02060903","用户名、邮箱、联系方式不能为空！");
+            throw new BusinessException("用户名、邮箱、联系方式不能为空！");
         }
 
-        SysUser temp = findSysUserByLoginName(entity.getLoginName());
+        SysUser temp = findByLoginNameOrEmailOrPhone(entity.getLoginName());
         if (BeanUtils.isNotNull(temp)) {
-            throw new BusinessException("-02060901", "【"+entity.getLoginName()+"】该用户已存在！");
+            throw new BusinessException("【"+entity.getLoginName()+"】该用户已存在！");
         }
 
-        temp = findSysUserByEmail(entity.getEmail());
+        temp = findByLoginNameOrEmailOrPhone(entity.getEmail());
         if (BeanUtils.isNotNull(temp)) {
-            throw new BusinessException("-02060902", "【"+entity.getEmail()+"】邮箱已被其他用户绑定！");
+            throw new BusinessException("【"+entity.getEmail()+"】邮箱已被其他用户绑定！");
         }
 
-        temp = findSysUserByPhone(entity.getPhone());
+        temp = findByLoginNameOrEmailOrPhone(entity.getPhone());
         if (BeanUtils.isNotNull(temp)) {
-            throw new BusinessException("-02060902", "【"+entity.getPhone()+"】联系方式已被其他用户绑定！");
+            throw new BusinessException("【"+entity.getPhone()+"】联系方式已被其他用户绑定！");
         }
 
         entity.setEnable(1);
@@ -97,21 +97,21 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     @Override
     public SysUser login(String loginName, String password) {
         if (StringUtils.isNullOrBlank(loginName) || StringUtils.isNullOrBlank(password)){
-            throw new BusinessException("-02060903","用户名或密码不能为空！");
+            throw new BusinessException("用户名或密码不能为空！");
         }
 
-        SysUser sysUser = findSysUserByLoginName(loginName);
+        SysUser sysUser = findByLoginNameOrEmailOrPhone(loginName);
         if (BeanUtils.isNull(sysUser)){
-            throw new BusinessException("-02060905","用户名或密码错误！");
+            throw new BusinessException("用户名或密码错误！");
         }
 
         if (!sysUser.getPassword().equals(PwdUtils.md5Encode(password,loginName))){
-            throw new BusinessException("-02060905","用户名或密码错误！");
+            throw new BusinessException("用户名或密码错误！");
         }
 
         Integer enabled = sysUser.getEnable();
         if (BeanUtils.isNull(enabled) || enabled.compareTo(0) == 0){
-            throw new BusinessException("-02060906","该用户禁止登录，请联系管理人员！");
+            throw new BusinessException("该用户禁止登录，请联系管理人员！");
         }
         String token = BeanUtils.getUUID();
         JedisUtils.hSet(token, SysConstants.LOGIN_NAME, sysUser.getLoginName());
@@ -143,37 +143,43 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
      * @return
      */
     @Override
-    public SysUser findSysUserByLoginName(String loginName) {
+    public SysUser findByLoginNameOrEmailOrPhone(String loginName) {
         SysUser currentUser = null;
         if (StringUtils.isNotNullOrBlank(loginName)) {
-            currentUser = sysUserDao.findSysUserByLoginName(loginName);
+            currentUser = sysUserDao.findByLoginNameOrEmailOrPhone(loginName);
         }
         return currentUser;
     }
 
     @Override
-    public SysUser findSysUserByEmail(String email) {
-        SysUser currentUser = null;
-        if (StringUtils.isNotNullOrBlank(email)) {
-            currentUser = sysUserDao.findSysUserByEmail(email);
+    public SysUser findByEmail(String email) {
+        if(StringUtils.isNullOrBlank(email)){
+            throw new BusinessException("请选择需要查询的数据！");
         }
-        return currentUser;
+        SysUser entity = sysUserDao.findByEmail(email);
+        if(BeanUtils.isNull(entity)){
+            throw  new BusinessException("查询的数据不存在或已删除！");
+        }
+        return entity;
     }
 
     @Override
-    public SysUser findSysUserByPhone(String phone) {
-        SysUser currentUser = null;
-        if (StringUtils.isNotNullOrBlank(phone)) {
-            currentUser = sysUserDao.findSysUserByPhone(phone);
+    public SysUser findByPhone(String phone) {
+        if(StringUtils.isNullOrBlank(phone)){
+            throw new BusinessException("请选择需要查询的数据！");
         }
-        return currentUser;
+        SysUser entity = sysUserDao.findByPhone(phone);
+        if(BeanUtils.isNull(entity)){
+            throw  new BusinessException("查询的数据不存在或已删除！");
+        }
+        return entity;
     }
 
     @Override
     public int grantByUser(String userId, List<String> roleIds) {
 
         if (StringUtils.isNullOrBlank(userId)){
-            throw new BusinessException("-02060907","请选择需要授权的用户！");
+            throw new BusinessException("请选择需要授权的用户！");
         }
 
         int rows = 0;
@@ -186,7 +192,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
                 List<SysUserRole> sysUserRoles = sysUserRoleDao.findAll(userRole);
                 if (CollectionUtils.isNotNullOrEmpty(sysUserRoles)){
                     SysRole role = sysRoleService.findByPK(roleId);
-                    throw new BusinessException("-02060908","角色【"+role.getName()+"】已存在！");
+                    throw new BusinessException("角色【"+role.getName()+"】已存在！");
                 }
                 userRoles.add(userRole);
                 sysUserRoleDao.add(userRole);
@@ -205,7 +211,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     public int resetPassword(SysUser entity) {
         int rows = 0;
         if (CollectionUtils.isNullOrEmpty(entity.getIds())){
-            throw new BusinessException("-02060909","请选择需要重置密码的用户！");
+            throw new BusinessException("请选择需要重置密码的用户！");
         }
         for (String id : entity.getIds()){
             SysUser user = findByPK(id);
@@ -231,7 +237,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
             }
             return rows;
         } catch (Exception e) {
-            throw new BusinessException("-02060910","导入用户错误："+e.getMessage());
+            throw new BusinessException("导入用户错误："+e.getMessage());
         }
     }
 
@@ -267,12 +273,12 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
                         CollectionLikeType type = objectMapper.getTypeFactory().constructCollectionLikeType(List.class,Map.class);
                         return objectMapper.readValue(objectMapper.writeValueAsString(lines),type);
                     } catch (IOException e) {
-                        throw new BusinessException("-04040201",e.getMessage());
+                        throw new BusinessException(e.getMessage());
                     }
                 }
             });
         } catch (Exception e) {
-            throw new BusinessException("-04040201","导出用户模板错误："+e.getMessage());
+            throw new BusinessException("导出用户模板错误："+e.getMessage());
         }
     }
 }

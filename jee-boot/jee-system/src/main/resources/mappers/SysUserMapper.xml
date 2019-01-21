@@ -334,21 +334,21 @@
     </select>
 
     <!-- 依据登录用户名查询用户 -->
-    <select id="findSysUserByLoginName" resultMap="RM_SysUser">
+    <select id="findByLoginNameOrEmailOrPhone" resultMap="RM_SysUser">
         SELECT
         <include refid="columns"/>
-        FROM ts_sys_user WHERE login_name = #{loginName}
+        FROM ts_sys_user WHERE login_name = #{loginName} OR email = #{loginName} OR phone = #{loginName}
     </select>
 
     <!-- 依据用户绑定邮箱查询用户 -->
-    <select id="findSysUserByEmail" resultMap="RM_SysUser">
+    <select id="findByEmail" resultMap="RM_SysUser">
         SELECT
         <include refid="columns"/>
         FROM ts_sys_user WHERE email = #{email}
     </select>
 
     <!-- 依据用户绑定邮箱查询用户 -->
-    <select id="findSysUserByPhone" resultMap="RM_SysUser">
+    <select id="findByPhone" resultMap="RM_SysUser">
         SELECT
         <include refid="columns"/>
         FROM ts_sys_user WHERE phone = #{phone}

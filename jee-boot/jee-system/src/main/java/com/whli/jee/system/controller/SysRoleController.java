@@ -10,10 +10,7 @@ import com.whli.jee.system.service.ISysRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -129,7 +126,7 @@ public class SysRoleController extends BaseController<SysRole> {
     @PostMapping(value = "/findByNo")
     @ApiOperation("根据角色编码查询")
     @Override
-    public SysRole findByNo(SysRole entity, HttpServletRequest req) throws Exception {
+    public SysRole findByNo(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findByNo(entity.getNo());
     }
 
@@ -140,7 +137,7 @@ public class SysRoleController extends BaseController<SysRole> {
     @PostMapping(value = "/findByName")
     @ApiOperation("根据角色名称查询")
     @Override
-    public SysRole findByName(SysRole entity, HttpServletRequest req) throws Exception {
+    public SysRole findByName(@RequestBody SysRole entity, HttpServletRequest req) throws Exception {
         return sysRoleService.findByName(entity.getName());
     }
 
@@ -164,7 +161,7 @@ public class SysRoleController extends BaseController<SysRole> {
 
     @ApiIgnore
     @Override
-    public ResponseBean importExcel(MultipartFile file) throws Exception {
+    public ResponseBean importExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file) throws Exception {
         return null;
     }
 

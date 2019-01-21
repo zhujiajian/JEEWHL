@@ -1,7 +1,6 @@
 package com.whli.jee.system.controller;
 
 import com.whli.jee.core.page.Page;
-import com.whli.jee.core.util.BeanUtils;
 import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysArea;
@@ -9,10 +8,7 @@ import com.whli.jee.system.service.ISysAreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -163,7 +159,7 @@ public class SysAreaController extends BaseController<SysArea> {
 
     @ApiIgnore
     @Override
-    public ResponseBean importExcel(MultipartFile file) throws Exception {
+    public ResponseBean importExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file) throws Exception {
         return null;
     }
 
@@ -180,12 +176,8 @@ public class SysAreaController extends BaseController<SysArea> {
      */
     @PostMapping(value = "/findByParentIdAndSort")
     @ApiOperation("查询同级别下序号是否存在")
-    public String findByParentIdAndSort(SysArea entity){
-        SysArea temp = sysAreaService.findByParentIdAndSort(entity);
-        if (BeanUtils.isNotNull(temp)){
-            return "false";
-        }
-        return "true";
+    public SysArea findByParentIdAndSort(@RequestBody SysArea entity) throws Exception{
+        return sysAreaService.findByParentIdAndSort(entity);
     }
 }
 

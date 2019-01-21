@@ -126,9 +126,31 @@ public class SysUserController extends BaseController<SysUser> {
     @PostMapping(value = "/findByNo")
     @ApiOperation("根据用户登录名查询")
     @Override
-    public SysUser findByNo(SysUser entity, HttpServletRequest req) throws Exception {
+    public SysUser findByNo(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findByNo(entity.getLoginName());
     }
+
+    /**
+     * 由邮箱查询用户
+     * @param entity
+     * @return
+     */
+    @PostMapping(value = "/findByEmail")
+    @ApiOperation("根据用户登录名查询")
+    public SysUser findByEmail(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
+        return sysUserService.findByEmail(entity.getEmail());
+    };
+
+    /**
+     * 由手机号查询用户
+     * @param entity
+     * @return
+     */
+    @PostMapping(value = "/findByPhone")
+    @ApiOperation("根据用户登录名查询")
+    public SysUser findByPhone(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
+        return sysUserService.findByPhone(entity.getPhone());
+    };
 
     /**
      * 根据名称查询entity
@@ -138,8 +160,19 @@ public class SysUserController extends BaseController<SysUser> {
     @PostMapping(value = "/findByName")
     @ApiOperation("根据用户姓名查询")
     @Override
-    public SysUser findByName(SysUser entity, HttpServletRequest req) throws Exception {
+    public SysUser findByName(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
         return sysUserService.findByName(entity.getName());
+    }
+
+    /**
+     * 根据名称查询entity
+     *
+     * @return
+     */
+    @PostMapping(value = "/findByLoginNameOrEmailOrPhone")
+    @ApiOperation("根据用户姓名查询")
+    public SysUser findByLoginNameOrEmailOrPhone(@RequestBody SysUser entity, HttpServletRequest req) throws Exception {
+        return sysUserService.findByLoginNameOrEmailOrPhone(entity.getLoginName());
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.whli.jee.system.controller;
 
 import com.whli.jee.core.page.Page;
-import com.whli.jee.core.util.BeanUtils;
 import com.whli.jee.core.web.controller.BaseController;
 import com.whli.jee.core.web.entity.ResponseBean;
 import com.whli.jee.system.entity.SysOffice;
@@ -9,10 +8,7 @@ import com.whli.jee.system.service.ISysOfficeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -129,7 +125,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
     @PostMapping(value = "/findByNo")
     @ApiIgnore
     @Override
-    public SysOffice findByNo(SysOffice entity, HttpServletRequest req) throws Exception {
+    public SysOffice findByNo(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         return null;
     }
 
@@ -143,7 +139,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
     @PostMapping(value = "/findByName")
     @ApiOperation("根据组织架构名称查询")
     @Override
-    public SysOffice findByName(SysOffice entity, HttpServletRequest req) throws Exception {
+    public SysOffice findByName(@RequestBody SysOffice entity, HttpServletRequest req) throws Exception {
         return sysOfficeService.findByName(entity.getName());
     }
 
@@ -167,7 +163,7 @@ public class SysOfficeController extends BaseController<SysOffice> {
 
     @ApiIgnore
     @Override
-    public ResponseBean importExcel(MultipartFile file) throws Exception {
+    public ResponseBean importExcel(@RequestParam(value = "uploadFile", required = false) MultipartFile file) throws Exception {
         return null;
     }
 
@@ -184,12 +180,8 @@ public class SysOfficeController extends BaseController<SysOffice> {
      */
     @PostMapping(value = "/findByParentIdAndSort")
     @ApiOperation("查询同级别下是否存在相同序号")
-    public String findByParentIdAndSort(SysOffice entity){
-        SysOffice temp = sysOfficeService.findByParentIdAndSort(entity);
-        if (BeanUtils.isNotNull(temp)){
-            return "false";
-        }
-        return "true";
+    public SysOffice findByParentIdAndSort(@RequestBody SysOffice entity){
+        return sysOfficeService.findByParentIdAndSort(entity);
     }
 }
 
