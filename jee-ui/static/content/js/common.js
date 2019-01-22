@@ -557,7 +557,7 @@ common.prototype.myAjax = function (url, data, contentType, method, async) {
 			} else {
 				if("-10005" == data.code){
 					JEE.confirmMsg(data.message,function(){
-						window.open("../../../ui/login.html","_top"); 
+						window.open("../../../page/login.html","_top"); 
 					});
 				}else{
 					layer.msg(data.message, {

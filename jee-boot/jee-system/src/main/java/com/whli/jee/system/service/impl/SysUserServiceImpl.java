@@ -33,7 +33,7 @@ import java.util.Map;
  * @since 1.0
  */
 @Service(value = "sysUserService")
-public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISysUserService{
 
     @Autowired
     private ISysUserDao sysUserDao;
