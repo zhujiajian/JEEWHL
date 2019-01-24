@@ -19,6 +19,8 @@
         <module>jee-system</module>
         <module>jee-job</module>
         <module>jee-web</module>
+        <module>jee-oa</module>
+        <module>jee-oa-web</module>
     </modules>
 
     <distributionManagement>

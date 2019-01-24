@@ -4,7 +4,7 @@ $(function () {
 	var searchValues = [{
 			id: "textSearchKey",
 			field: "key",
-			title: "模型KEY"
+			title: "模型标识"
 		},
 		{
 			id: "textSearchName",
@@ -43,7 +43,7 @@ $(function () {
 						JEE.errMsg("请选择一条需要修改的数据！");
 						return;
 					}
-					window.open(activityUrl+"/static/modeler.html?modelId="+selections[0].id,"_blank");
+					window.open(oaUrl+"/modeler.html?modelId="+selections[0].id,"_blank");
 				},
 				otherOptions: [{
 					id: "tb_data",
@@ -67,7 +67,7 @@ $(function () {
 					}
 					
 					JEE.confirmMsg("是否确认删除数据？", function(){
-						$.when(JEE.myAjax(activityUrl+"/deleteModel", {id: selections[0].id})).done(function(result){
+						$.when(JEE.myAjax(oaUrl+"/oa/basModel/deleteModel", {id: selections[0].id})).done(function(result){
 							$("#tb_data").bootstrapTable("refresh");
 						});
 					});
@@ -90,7 +90,7 @@ $(function () {
 					}
 					
 					JEE.confirmMsg("是否确认发布流程模型？", function(){
-						$.when(JEE.myAjax(activityUrl+"/deployModel", {id: selections[0].id})).done(function(result){
+						$.when(JEE.myAjax(oaUrl+"/oa/basModel/deployModel", {id: selections[0].id})).done(function(result){
 							$("#tb_data").bootstrapTable("refresh");
 						});
 					});
@@ -99,7 +99,7 @@ $(function () {
 		],
 		tableId: "tb_data",
 		mainSearch: searchValues,
-		url: activityUrl+"/findByPage",
+		url: oaUrl+"/oa/basModel/findByPage",
 		//pagination: false,
 		showRefresh:true,
 		searchParams: function () {
@@ -111,7 +111,7 @@ $(function () {
 			},
 			{
 				field: "key",
-				title: "模型KEY"
+				title: "模型标识"
 			},
 			{
 				field: "name",
@@ -145,10 +145,10 @@ function showDialog(change, formData) {
 			formId: "dataForm",
 			//showConfirm:true,
 			btnClick: function (data) {
-				var url = activityUrl+"/addModel";
+				var url = oaUrl+"/oa/basModel/addModel";
 				$.when(JEE.myAjax(url, data)).done(function (result) {
 					if (result) {
-						window.open(activityUrl+"/static/modeler.html?modelId="+result,"_blank");
+						window.open(oaUrl+"/modeler.html?modelId="+result,"_blank");
 						$("#myModal").modal("hide");
 						$("#tb_data").bootstrapTable("refresh");
 					}
@@ -162,7 +162,7 @@ function showDialog(change, formData) {
 				{
 					id: "textKey",
 					field: "key",
-					title: "模型KEY",
+					title: "模型标识",
 					disable: false,
 					valid: "required"
 				},

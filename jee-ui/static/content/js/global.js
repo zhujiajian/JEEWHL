@@ -1,7 +1,6 @@
 var apiUrl = "http://127.0.0.1:8088/jee";
 var jobUrl = "http://127.0.0.1:8088/jee";
-var activityUrl = "http://127.0.0.1:8080/activity";
-var oaUrl = "http://127.0.0.1:8088/jee";
+var oaUrl = "http://127.0.0.1:8188/oa";
 
 
 /**

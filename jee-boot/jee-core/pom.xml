@@ -13,7 +13,6 @@
     <packaging>jar</packaging>
 
     <name>jee-core</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
@@ -54,7 +53,7 @@
         </dependency>
         <!-- 工具 -->
 
-        <!-- 数据库及Mybatis依赖 -->
+        <!-- Mybatis依赖 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
